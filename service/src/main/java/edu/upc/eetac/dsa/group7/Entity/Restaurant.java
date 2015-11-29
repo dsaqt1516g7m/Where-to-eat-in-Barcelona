@@ -18,6 +18,7 @@ public class Restaurant {
     private String owner;
     private int likes;
     private String address;
+    private String phone;
     private float lat;
     private float lng;
 
@@ -83,6 +84,14 @@ public class Restaurant {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public float getLat() {
