@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa.group7.Entity;
+package edu.upc.eetac.dsa.group7.entity;
 
 import org.glassfish.jersey.linking.InjectLinks;
 

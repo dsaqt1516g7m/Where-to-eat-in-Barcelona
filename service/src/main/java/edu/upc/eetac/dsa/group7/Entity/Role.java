@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa.group7.Entity;
+package edu.upc.eetac.dsa.group7.entity;
 
 /**
  * Created by Alex on 29/11/15.
