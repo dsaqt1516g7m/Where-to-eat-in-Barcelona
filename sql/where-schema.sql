@@ -14,7 +14,7 @@ CREATE TABLE users (
 
 CREATE TABLE user_roles (
     userid BINARY(16) NOT NULL,
-    role ENUM ('registered','admin'),
+    role ENUM ('registered','admin','owner'),
     FOREIGN KEY (userid) REFERENCES users (id) on delete cascade,
     PRIMARY KEY (userid, role)
 );
@@ -31,6 +31,7 @@ CREATE TABLE restaurants (
     name VARCHAR(100) NOT NULL,
     description VARCHAR(500) NOT NULL,
     avgprice DECIMAL NOT NULL,
+    owner VARCHAR(100) NOT NULL,
     likes INT NOT NULL,
     address VARCHAR(100) NOT NULL,
     phone VARCHAR(9) NOT NULL,
@@ -41,13 +42,21 @@ CREATE TABLE restaurants (
 
 CREATE TABLE comments(
     id BINARY(16) NOT NULL,
-    restaurant BINARY(16) NOT NULL,
     creator BINARY(16) NOT NULL,
+    restaurant BINARY(16) NOT NULL,
     title VARCHAR(100) NOT NULL,
     comment VARCHAR(500) NOT NULL,
-    last_modified TIMESTAMP NOT NULL,
+    response VARCHAR(500) NOT NULL,
     creation_timestamp DATETIME not null default current_timestamp,
-    FOREIGN Key (restaurant) REFERENCES restaurants(id) on delete cascade,
     FOREIGN KEY (creator) REFERENCES users (id) on delete cascade,
+    FOREIGN KEY (restaurant) REFERENCES restaurants (id) on delete cascade,
     PRIMARY KEY (id)
+);
+
+CREATE TABLE like_restaurant(
+    restaurant BINARY(16) NOT NULL,
+    user BINARY(16) NOT NULL,
+    FOREIGN KEY (user) REFERENCES user(id) on delete cascade,
+    FOREIGN KEY (restaurant) REFERENCES restaurants(id) on delete cascade,
+    PRIMARY KEY (restaurant, user)
 );
