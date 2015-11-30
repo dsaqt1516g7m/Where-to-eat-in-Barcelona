@@ -52,6 +52,7 @@ public class UserDAOImpl implements UserDAO{
         // Devuelve el modelo
         return user;
     }
+
     @Override
     public User updateProfile(String id, String email, String fullname) throws SQLException {
         User user = null;
