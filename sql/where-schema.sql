@@ -60,3 +60,34 @@ CREATE TABLE like_restaurant(
     FOREIGN KEY (restaurant) REFERENCES restaurants(id) on delete cascade,
     PRIMARY KEY (restaurant, user)
 );
+
+
+# Create user admin
+insert into users (id, loginid, password, email, fullname) values (UNHEX(REPLACE(UUID(),'-','')), 'admin', UNHEX(MD5('admin')), 'admin@admin', 'I am the admin');
+select @idspongebob := id from users where loginid='admin';
+insert into user_roles (userid, role) values (@idspongebob, 'admin');
+insert into auth_tokens (userid, token) values (@idspongebob, UNHEX(REPLACE(UUID(),'-','')));
+
+# Create user owner --> Alex
+insert into users (id, loginid, password, email, fullname) values (UNHEX(REPLACE(UUID(),'-','')), 'alex', UNHEX(MD5('alex')), 'alex@owner', 'Hi, I am Alex');
+select @idalex := id from users where loginid='alex';
+insert into user_roles (userid, role) values (@idalex, 'owner');
+insert into auth_tokens (userid, token) values (@idalex, UNHEX(REPLACE(UUID(),'-','')));
+
+# Create user owner --> Carolina
+insert into users (id, loginid, password, email, fullname) values (UNHEX(REPLACE(UUID(),'-','')), 'carolina', UNHEX(MD5('carolina')), 'carolina@owner', 'Hi, I am Carolina');
+select @idcarolina := id from users where loginid='carolina';
+insert into user_roles (userid, role) values (@idcarolina, 'owner');
+insert into auth_tokens (userid, token) values (@idcarolina, UNHEX(REPLACE(UUID(),'-','')));
+
+# Create user owner --> Paulina
+insert into users (id, loginid, password, email, fullname) values (UNHEX(REPLACE(UUID(),'-','')), 'paulina', UNHEX(MD5('paulina')), 'paulina@owner', 'Hi, I am Paulina');
+select @idpaulina := id from users where loginid='paulina';
+insert into user_roles (userid, role) values (@idpaulina, 'owner');
+insert into auth_tokens (userid, token) values (@idpaulina, UNHEX(REPLACE(UUID(),'-','')));
+
+# Create user owner --> Agnieszka
+insert into users (id, loginid, password, email, fullname) values (UNHEX(REPLACE(UUID(),'-','')), 'agnieszka', UNHEX(MD5('agnieszka')), 'agnieszka@owner', 'Hi, I am Agnieszka');
+select @idagnieszka := id from users where loginid='agnieszka';
+insert into user_roles (userid, role) values (@idagnieszka, 'owner');
+insert into auth_tokens (userid, token) values (@idagnieszka, UNHEX(REPLACE(UUID(),'-','')));

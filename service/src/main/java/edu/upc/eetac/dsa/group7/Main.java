@@ -54,6 +54,8 @@ public class Main {
     public static void main(String[] args) throws IOException, SQLException {
         final HttpServer server = startServer();
 /*
+        Methods for creating a admin and owner users (actually not in use)
+
         //Admin user creator
         UserDAO userDAO = new UserDAOImpl();
         User user = null;
