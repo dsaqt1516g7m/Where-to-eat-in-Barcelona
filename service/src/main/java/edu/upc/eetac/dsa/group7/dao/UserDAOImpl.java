@@ -337,6 +337,7 @@ public class UserDAOImpl implements UserDAO{
     public boolean admin(String id) throws SQLException{
         Connection connection = null;
         String auth=null;
+        String admin="admin";
         PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
@@ -346,7 +347,7 @@ public class UserDAOImpl implements UserDAO{
             if (rs.next()) {
                 auth=rs.getString("role");
             }
-            if (auth=="admin"){
+            if (auth.equals(admin)){
                 return true;
             }
             else {
