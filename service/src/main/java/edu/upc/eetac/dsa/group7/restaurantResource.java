@@ -2,6 +2,8 @@ package edu.upc.eetac.dsa.group7;
 
 import edu.upc.eetac.dsa.group7.dao.RestaurantDAO;
 import edu.upc.eetac.dsa.group7.dao.RestaurantDAOImpl;
+import edu.upc.eetac.dsa.group7.dao.UserDAO;
+import edu.upc.eetac.dsa.group7.dao.UserDAOImpl;
 import edu.upc.eetac.dsa.group7.entity.AuthToken;
 import edu.upc.eetac.dsa.group7.entity.Restaurant;
 import edu.upc.eetac.dsa.group7.entity.RestaurantCollection;
@@ -27,10 +29,15 @@ public class restaurantResource {
         if(name==null || description == null || avgprice == null || address == null || phone == null || lat == null || lng == null)
             throw new BadRequestException("all parameters are mandatory");
         RestaurantDAO restaurantDAO = new RestaurantDAOImpl();
+        UserDAO userDAO = new UserDAOImpl();
         Restaurant restaurant;
         AuthToken authenticationToken = null;
         try {
-            restaurant = restaurantDAO.createRestaurant(name, description, avgprice, securityContext.getUserPrincipal().getName(), address, phone, lat, lng);
+            if (userDAO.owner(securityContext.getUserPrincipal().getName())==true) {
+                restaurant = restaurantDAO.createRestaurant(name, description, avgprice, securityContext.getUserPrincipal().getName(), address, phone, lat, lng);
+            }else{
+                throw new BadRequestException("You must be the owner to create a restaurant!");
+            }
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }

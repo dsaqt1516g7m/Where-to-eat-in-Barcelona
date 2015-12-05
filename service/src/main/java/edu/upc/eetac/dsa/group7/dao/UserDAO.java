@@ -23,4 +23,8 @@ public interface UserDAO {
     public User createAdmin() throws SQLException;
 
     public User createOwner() throws SQLException;
+
+    public boolean owner(String id) throws SQLException;
+
+    public boolean admin(String id) throws SQLException;
 }

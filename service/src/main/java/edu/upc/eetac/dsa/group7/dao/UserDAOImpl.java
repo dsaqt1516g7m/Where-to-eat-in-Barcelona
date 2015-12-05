@@ -1,5 +1,6 @@
 package edu.upc.eetac.dsa.group7.dao;
 
+import edu.upc.eetac.dsa.group7.entity.Role;
 import edu.upc.eetac.dsa.group7.entity.User;
 
 import java.math.BigInteger;
@@ -300,5 +301,63 @@ public class UserDAOImpl implements UserDAO{
             }
         }
         return getUserByLoginid(loginid);
+    }
+
+    @Override
+    public boolean owner(String id) throws SQLException{
+        Connection connection = null;
+        String auth=null;
+        String owner="owner";
+        String admin="admin";
+        PreparedStatement stmt = null;
+        try {
+            connection = Database.getConnection();
+            stmt = connection.prepareStatement(UserDAOQuery.GET_ROLES_OF_USER);
+            stmt.setString(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                auth=rs.getString("role");
+            }
+            if (auth.equals(admin) || auth.equals(owner)){
+                return true;
+            }
+            else {
+                return false;
+            }
+
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            if (stmt != null) stmt.close();
+            if (connection != null) connection.close();
+        }
+    }
+
+    @Override
+    public boolean admin(String id) throws SQLException{
+        Connection connection = null;
+        String auth=null;
+        PreparedStatement stmt = null;
+        try {
+            connection = Database.getConnection();
+            stmt = connection.prepareStatement(UserDAOQuery.GET_ROLES_OF_USER);
+            stmt.setString(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                auth=rs.getString("role");
+            }
+            if (auth=="admin"){
+                return true;
+            }
+            else {
+                return false;
+            }
+
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            if (stmt != null) stmt.close();
+            if (connection != null) connection.close();
+        }
     }
 }
