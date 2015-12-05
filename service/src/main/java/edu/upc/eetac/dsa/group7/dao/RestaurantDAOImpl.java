@@ -15,11 +15,11 @@ import java.text.DecimalFormat;
 public class RestaurantDAOImpl implements RestaurantDAO {
 
     @Override
-    public Restaurant createRestaurant(String name, String description, Float avgprice, String owner, int likes, String address, String phone, float lat, float lng) throws SQLException {
+    public Restaurant createRestaurant(String name, String description, Float avgprice, String owner, String address, String phone, float lat, float lng) throws SQLException {
         Connection connection = null;
         PreparedStatement stmt = null;
-        likes=0;
         String id = null;
+        int likes=0;
         try {
             connection = Database.getConnection();
 

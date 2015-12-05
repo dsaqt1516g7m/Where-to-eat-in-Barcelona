@@ -1,0 +1,269 @@
+{
+	"id": "322df718-ca1d-0a70-53bb-1f3917870e99",
+	"name": "Where to eat in Barcelona?",
+	"description": "",
+	"order": [
+		"d0a7919d-b8dd-0505-b902-0c3d231cc166"
+	],
+	"folders": [
+		{
+			"id": "822109fb-0fa7-6681-55bc-5afbd170b727",
+			"name": "Restaurant",
+			"description": "",
+			"order": [
+				"4fb1ac5d-93e2-8687-e0b1-171086b14c66",
+				"7432ad5e-525b-74cc-0e50-26821bccc440",
+				"c2d7b177-00bc-e99b-c2cd-025ad444cddd"
+			],
+			"owner": "165619"
+		},
+		{
+			"id": "eb0442bf-28ba-6e49-6492-411343d5756d",
+			"name": "Users",
+			"description": "",
+			"order": [
+				"2ac7fca1-9ef2-bd7c-7f02-52fdf9a70696",
+				"50dbb4e7-fb80-42c4-8d69-8b7cfe2f3891",
+				"c689eb24-1816-9e25-1886-591652335c6c",
+				"cf0ee4da-2aa2-dc92-be76-57628c8203e6"
+			],
+			"owner": "165619"
+		}
+	],
+	"timestamp": 1448275420347,
+	"owner": "165619",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "2ac7fca1-9ef2-bd7c-7f02-52fdf9a70696",
+			"headers": "",
+			"url": "http://localhost:8080/where/users",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"data": [
+				{
+					"key": "loginid",
+					"value": "SpongeBob",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "1234",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "spongebob@bikinibottom.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "fullname",
+					"value": "Spongebob Squarepants",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "Create User",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1448881077867,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "eb0442bf-28ba-6e49-6492-411343d5756d"
+		},
+		{
+			"id": "4fb1ac5d-93e2-8687-e0b1-171086b14c66",
+			"headers": "X-Auth-Token: 48E104DE986411E5A864653CFD4047A3\nContent-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/where/restaurant",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "name",
+					"value": "Test Restaurant 1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "description of the first restaurant",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "avgprice",
+					"value": "10",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "address",
+					"value": "Street false 123",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "phone",
+					"value": "123456",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "lat",
+					"value": "43",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "lng",
+					"value": "45",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1449308735686,
+			"name": "Create a Restaurant",
+			"description": "",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"responses": []
+		},
+		{
+			"id": "50dbb4e7-fb80-42c4-8d69-8b7cfe2f3891",
+			"headers": "",
+			"url": "http://localhost:8080/where/users/C9203922975011E5AC1BB4BB8D93375C",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"data": [],
+			"dataMode": "urlencoded",
+			"name": "Get User by ID",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1448881272085,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "eb0442bf-28ba-6e49-6492-411343d5756d"
+		},
+		{
+			"id": "7432ad5e-525b-74cc-0e50-26821bccc440",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/where/restaurant",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1449309049583,
+			"name": "Restaurant Collection",
+			"description": "",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"responses": []
+		},
+		{
+			"id": "c2d7b177-00bc-e99b-c2cd-025ad444cddd",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/where/restaurant/E3B39DBE9B3411E5811EEFBFEE6E5871",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1449309090853,
+			"name": "RestaurantByID",
+			"description": "",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"responses": []
+		},
+		{
+			"id": "c689eb24-1816-9e25-1886-591652335c6c",
+			"headers": "Content-Type: application/vnd.dsa.where.user+json\nX-Auth-Token: C928CDDA975011E5AC1BB4BB8D93375C\n",
+			"url": "http://localhost:8080/where/users/C9203922975011E5AC1BB4BB8D93375C",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "PUT",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Update User",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1448882247014,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "eb0442bf-28ba-6e49-6492-411343d5756d",
+			"rawModeData": "{\n  \"id\": \"C9203922975011E5AC1BB4BB8D93375C\",\n  \"loginid\": \"SpongeBob\",\n  \"email\": \"spongebob2@bikinibottom.com\",\n  \"fullname\": \"Spongebob Squarepants\"\n}"
+		},
+		{
+			"id": "cf0ee4da-2aa2-dc92-be76-57628c8203e6",
+			"headers": "X-Auth-Token: de68e3f2975411e5ac1bb4bb8d93375c\n",
+			"url": "http://localhost:8080/where/users/DE62BCCA975411E5AC1BB4BB8D93375C",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "DELETE",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Delete User",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1448882675497,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "eb0442bf-28ba-6e49-6492-411343d5756d",
+			"rawModeData": ""
+		},
+		{
+			"id": "d0a7919d-b8dd-0505-b902-0c3d231cc166",
+			"headers": "",
+			"url": "http://localhost:8080/where/myresource",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1448875843118,
+			"name": "Got It!",
+			"description": "",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"responses": []
+		}
+	]
+}
