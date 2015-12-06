@@ -74,4 +74,48 @@ public class restaurantResource {
         }
         return restaurant;
     }
+
+    @Path("/{id}")
+    @PUT
+    @Consumes(WhereMediaType.WHERE_RESTAURANT)
+    @Produces(WhereMediaType.WHERE_RESTAURANT)
+    public Restaurant updateRestaurant(@PathParam("id") String id, Restaurant restaurant) {
+        if(restaurant == null)
+            throw new BadRequestException("entity is null");
+        if(!id.equals(restaurant.getId()))
+            throw new BadRequestException("path parameter id and entity parameter id doesn't match");
+        UserDAO userDAO = new UserDAOImpl();
+        String userid = securityContext.getUserPrincipal().getName();
+        try {
+            if(userid.equals(restaurant.getOwner()) || userDAO.admin(securityContext.getUserPrincipal().getName())==true) {
+                RestaurantDAO restaurantDAO = new RestaurantDAOImpl();
+                restaurant = restaurantDAO.updateRestaurant(restaurant.getId(), restaurant.getDescription(), restaurant.getAvgprice(), restaurant.getPhone());
+                if (restaurant == null)
+                    throw new NotFoundException("Restaurant with id = " + id + " doesn't exist");
+            }else
+                throw new ForbiddenException("operation not allowed");
+            } catch (SQLException e) {
+                throw new InternalServerErrorException();
+            }
+            return restaurant;
+    }
+
+    @Path("/{id}")
+    @DELETE
+    public void deleteRestaurant(@PathParam("id") String id) {
+        String userid = securityContext.getUserPrincipal().getName();
+        RestaurantDAO restaurantDAO = new RestaurantDAOImpl();
+        try {
+            UserDAO userDAO = new UserDAOImpl();
+            String ownerid = restaurantDAO.getRestaurantById(id).getOwner();
+            if(userid.equals(restaurantDAO.getRestaurantById(id).getOwner()) || userDAO.admin(securityContext.getUserPrincipal().getName())==true)
+            {
+                if(!restaurantDAO.deleteRestaurant(id))
+                    throw new NotFoundException("Restaurant with id = "+id+" doesn't exist");
+            }else
+                throw new ForbiddenException("operation not allowed");
+        } catch (SQLException e) {
+            throw new InternalServerErrorException();
+        }
+    }
 }

@@ -126,19 +126,19 @@ public class RestaurantDAOImpl implements RestaurantDAO {
     }
 
     @Override
-    public Restaurant updateRestaurant(String id, String phone, String description, Float avgprice) throws SQLException {
+    public Restaurant updateRestaurant(String id, String description, Float avgprice, String phone) throws SQLException {
         Restaurant restaurant = null;
-
         Connection connection = null;
         PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
 
             stmt = connection.prepareStatement(RestaurantDAOQuery.UPDATE_RESTAURANT);
-            stmt.setString(1, phone);
-            stmt.setString(2, description);
-            stmt.setFloat(3, avgprice);
-            stmt.setString(3, id);
+
+            stmt.setString(1, description);
+            stmt.setFloat(2, avgprice);
+            stmt.setString(3, phone);
+            stmt.setString(4, id);
 
             int rows = stmt.executeUpdate();
             if (rows == 1)
@@ -149,7 +149,6 @@ public class RestaurantDAOImpl implements RestaurantDAO {
             if (stmt != null) stmt.close();
             if (connection != null) connection.close();
         }
-
         return restaurant;
     }
 
