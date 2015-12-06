@@ -13,9 +13,12 @@
 			"order": [
 				"4fb1ac5d-93e2-8687-e0b1-171086b14c66",
 				"7432ad5e-525b-74cc-0e50-26821bccc440",
-				"c2d7b177-00bc-e99b-c2cd-025ad444cddd"
+				"c2d7b177-00bc-e99b-c2cd-025ad444cddd",
+				"8a3ba960-2d47-0d1b-100f-040d5001a78b",
+				"0184ffc3-3834-a4b5-533c-5918ef36a5b6"
 			],
-			"owner": "165619"
+			"owner": "165619",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99"
 		},
 		{
 			"id": "eb0442bf-28ba-6e49-6492-411343d5756d",
@@ -35,6 +38,28 @@
 	"remoteLink": "",
 	"public": false,
 	"requests": [
+		{
+			"id": "0184ffc3-3834-a4b5-533c-5918ef36a5b6",
+			"headers": "X-Auth-Token: 7842F2347B0211E593FDAF518ABF1D56\nContent-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/grouptalk/groups/783B34FE7B0211E593FDAF518ABF1D56/90E1FE1C7B4211E593FDAF518ABF1D56",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1445851172369,
+			"name": "Delete restaurant",
+			"description": "",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"responses": [],
+			"folder": "822109fb-0fa7-6681-55bc-5afbd170b727",
+			"isFromCollection": true,
+			"collectionRequestId": "e634500f-bfc7-e788-e132-af2e17b8b142"
+		},
 		{
 			"id": "2ac7fca1-9ef2-bd7c-7f02-52fdf9a70696",
 			"headers": "",
@@ -137,7 +162,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1449308735686,
+			"time": 1449325021833,
 			"name": "Create a Restaurant",
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
@@ -182,6 +207,26 @@
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
 			"responses": []
+		},
+		{
+			"id": "8a3ba960-2d47-0d1b-100f-040d5001a78b",
+			"headers": "X-Auth-Token: 48E104DE986411E5A864653CFD4047A3\nContent-Type: application/vnd.dsa.where.restaurant+json\n",
+			"url": "http://localhost:8080/where/restaurant/6F4B98BE9B5C11E5811EEFBFEE6E5871",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1449399744244,
+			"name": "Update restaurant",
+			"description": "",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"responses": [],
+			"rawModeData": "{\n  \"links\": null,\n  \"id\": \"6F4B98BE9B5C11E5811EEFBFEE6E5871\",\n  \"name\": \"Test Restaurant 1\",\n  \"description\": \"description of the first restaurant -- modified\",\n  \"avgprice\": 10,\n  \"owner\": \"48E0AED0986411E5A864653CFD4047A3\",\n  \"likes\": 0,\n  \"address\": \"Street false 123\",\n  \"phone\": \"123456\",\n  \"lat\": 43,\n  \"lng\": 45\n}"
 		},
 		{
 			"id": "c2d7b177-00bc-e99b-c2cd-025ad444cddd",
