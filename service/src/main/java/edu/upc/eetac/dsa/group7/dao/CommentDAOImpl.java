@@ -173,10 +173,21 @@ public class CommentDAOImpl implements CommentDAO {
         Restaurant restaurant=restaurantDao.getRestaurantById(comment.getRestaurant());
         int restaurantLikes=restaurant.getLikes();
         int likesComment= comment.getLikes();
-        likes = restaurantLikes + likesComment;
+        likes = restaurantLikes - likesComment;
 
         try {
             connection = Database.getConnection();
+            stmt = connection.prepareStatement(RestaurantDAOQuery.VOTE_RESTAURANT);
+            stmt.setInt(1, likes);
+            stmt.setString(2, comment.getRestaurant());
+            stmt.executeUpdate();
+            stmt=null;
+
+            stmt = connection.prepareStatement(CommentDAOQuery.REMOVE_VALORATION);
+            stmt.setString(1, comment.getRestaurant());
+            stmt.setString(2, comment.getCreator());
+            stmt.executeUpdate();
+            stmt=null;
 
             stmt = connection.prepareStatement(CommentDAOQuery.DELETE_COMMENT);
             stmt.setString(1, id);
