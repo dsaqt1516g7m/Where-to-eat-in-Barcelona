@@ -14,5 +14,9 @@
   {
     "path": "(?i)restaurant/?([0-9a-f]{32})?",
     "methods": ["GET"]
+  },
+  {
+    "path": "(?i)restaurant/?([0-9a-f]{32})?/comments/?([0-9a-f]{32})?",
+    "methods": ["GET"]
   }
 ]

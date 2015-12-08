@@ -11,7 +11,9 @@
 			"name": "Comments",
 			"description": "",
 			"order": [
-				"cdc2a46f-3a4d-4853-d5b4-1f3d5501d506"
+				"cdc2a46f-3a4d-4853-d5b4-1f3d5501d506",
+				"2a7130d9-5eeb-186a-93a9-af55bd259422",
+				"65f2fbe7-834d-be63-04a9-6affb4da6f1b"
 			],
 			"owner": "165619"
 		},
@@ -68,6 +70,27 @@
 			"folder": "822109fb-0fa7-6681-55bc-5afbd170b727",
 			"isFromCollection": true,
 			"collectionRequestId": "e634500f-bfc7-e788-e132-af2e17b8b142"
+		},
+		{
+			"id": "2a7130d9-5eeb-186a-93a9-af55bd259422",
+			"headers": "",
+			"url": "http://localhost:8080/where/restaurant/E3B39DBE9B3411E5811EEFBFEE6E5871/comments",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"data": [],
+			"dataMode": "urlencoded",
+			"name": "Get CommentsCollection",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1449597397754,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "a7e5fbe3-7bba-4b38-c41a-73dd6ce9a1fe"
 		},
 		{
 			"id": "2ac7fca1-9ef2-bd7c-7f02-52fdf9a70696",
@@ -197,6 +220,27 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"folder": "eb0442bf-28ba-6e49-6492-411343d5756d"
+		},
+		{
+			"id": "65f2fbe7-834d-be63-04a9-6affb4da6f1b",
+			"headers": "",
+			"url": "http://localhost:8080/where/restaurant/E3B39DBE9B3411E5811EEFBFEE6E5871/comments/06A57C6C9DD211E5BD32344DE79C5AED",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"data": [],
+			"dataMode": "urlencoded",
+			"name": "Get Comment",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1449597413624,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "a7e5fbe3-7bba-4b38-c41a-73dd6ce9a1fe"
 		},
 		{
 			"id": "7432ad5e-525b-74cc-0e50-26821bccc440",

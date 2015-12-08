@@ -6,6 +6,7 @@ import edu.upc.eetac.dsa.group7.dao.RestaurantDAO;
 import edu.upc.eetac.dsa.group7.dao.RestaurantDAOImpl;
 import edu.upc.eetac.dsa.group7.entity.AuthToken;
 import edu.upc.eetac.dsa.group7.entity.Comment;
+import edu.upc.eetac.dsa.group7.entity.CommentCollection;
 import edu.upc.eetac.dsa.group7.entity.Restaurant;
 
 import javax.ws.rs.*;
@@ -42,5 +43,34 @@ public class CommentResource {
         }
         URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + comment.getId());
         return Response.created(uri).type(WhereMediaType.WHERE_COMMENT).entity(comment).build();
+    }
+
+    @GET
+    @Produces(WhereMediaType.WHERE_COMMENT_COLLECTION)
+    public CommentCollection getComments(){
+        CommentCollection commentCollection = null;
+        CommentDAO commentDAO = new CommentDAOImpl();
+        try {
+            commentCollection = commentDAO.getComemnts();
+        } catch (SQLException e) {
+            throw new InternalServerErrorException();
+        }
+        return commentCollection;
+    }
+
+    @Path("/{id}")
+    @GET
+    @Produces(WhereMediaType.WHERE_COMMENT)
+    public Comment getComment(@PathParam("id") String id){
+        Comment comment = null;
+        CommentDAO commentDAO = new CommentDAOImpl();
+        try {
+            comment = commentDAO.getCommentById(id);
+            if(comment == null)
+                throw new NotFoundException("Sting with id = "+id+" doesn't exist");
+        } catch (SQLException e) {
+            throw new InternalServerErrorException();
+        }
+        return comment;
     }
 }
