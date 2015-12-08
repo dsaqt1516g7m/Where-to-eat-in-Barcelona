@@ -23,7 +23,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
         try {
             connection = Database.getConnection();
 
-            stmt = connection.prepareStatement(UserDAOQuery.UUID);
+            stmt = connection.prepareStatement(RestaurantDAOQuery.UUID);
             ResultSet rs = stmt.executeQuery();
             if (rs.next())
                 id = rs.getString(1);
@@ -172,4 +172,51 @@ public class RestaurantDAOImpl implements RestaurantDAO {
         }
     }
 
+    @Override
+    public Restaurant voteRestaurant(String id, int likes) throws SQLException {
+        Restaurant restaurant = null;
+
+        Connection connection = null;
+        PreparedStatement stmt = null;
+        try {
+            connection = Database.getConnection();
+
+            stmt = connection.prepareStatement(RestaurantDAOQuery.GET_RESTAURANT_BY_ID);
+            stmt.setString(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                restaurant = new Restaurant();
+                restaurant.setLikes(rs.getInt("likes"));
+            }
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            if (stmt != null) stmt.close();
+            if (connection != null) connection.close();
+        }
+        int likesResult = restaurant.getLikes()+likes;
+        restaurant = null;
+        connection = null;
+        stmt = null;
+
+        try {
+            connection = Database.getConnection();
+
+            stmt = connection.prepareStatement(RestaurantDAOQuery.VOTE_RESTAURANT);
+
+            stmt.setInt(1, likesResult);
+            stmt.setString(2, id);
+
+            int rows = stmt.executeUpdate();
+            if (rows == 1)
+                restaurant = getRestaurantById(id);
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            if (stmt != null) stmt.close();
+            if (connection != null) connection.close();
+        }
+        return restaurant;
+    }
 }

@@ -3,6 +3,7 @@ package edu.upc.eetac.dsa.group7.dao;
 import edu.upc.eetac.dsa.group7.entity.Comment;
 import edu.upc.eetac.dsa.group7.entity.CommentCollection;
 
+import javax.ws.rs.BadRequestException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,23 +19,45 @@ public class CommentDAOImpl implements CommentDAO {
         Connection connection = null;
         PreparedStatement stmt = null;
         String id = null;
+        String restaurantid = null;
+        String response="";
         try {
             connection = Database.getConnection();
-
-            stmt = connection.prepareStatement(UserDAOQuery.UUID);
+            stmt = connection.prepareStatement(CommentDAOQuery.UUID);
             ResultSet rs = stmt.executeQuery();
             if (rs.next())
                 id = rs.getString(1);
             else
                 throw new SQLException();
+            stmt=null;
 
-            stmt = connection.prepareStatement(CommentDAOQuery.CREATE_COMMENT);
-            stmt.setString(1, id);
+            stmt = connection.prepareStatement(CommentDAOQuery.CHECK_VALORATON);
+            stmt.setString(1, creator);
+            ResultSet rs2 = stmt.executeQuery();
+            if (rs2.next()) {
+                restaurantid = rs2.getString(1);
+                if (restaurantid.equals(restaurant))
+                    throw new BadRequestException("You cannot comment a restaurant twice");
+            }
+                stmt = null;
+
+                stmt = connection.prepareStatement(CommentDAOQuery.CREATE_COMMENT);
+                stmt.setString(1, id);
+                stmt.setString(2, creator);
+                stmt.setString(3, restaurant);
+                stmt.setString(4, title);
+                stmt.setString(5, comment);
+                stmt.setString(6, response);
+                stmt.executeUpdate();
+
+            stmt = null;
+
+            stmt = connection.prepareStatement(CommentDAOQuery.VALORATION);
+            stmt.setString(1, restaurant);
             stmt.setString(2, creator);
-            stmt.setString(3, restaurant);
-            stmt.setString(4, title);
-            stmt.setString(5, comment);
             stmt.executeUpdate();
+            stmt = null;
+
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -110,7 +133,7 @@ public class CommentDAOImpl implements CommentDAO {
     }
 
     @Override
-    public Comment responseComment(String id, String response) throws SQLException {
+    public Comment responseComment(String id, String response) throws SQLException{
         Comment comment = null;
 
         Connection connection = null;
@@ -120,7 +143,7 @@ public class CommentDAOImpl implements CommentDAO {
 
             stmt = connection.prepareStatement(CommentDAOQuery.RESPONSE_COMMENT);
             stmt.setString(1, response);
-            stmt.setString(3, id);
+            stmt.setString(2, id);
 
             int rows = stmt.executeUpdate();
             if (rows == 1)

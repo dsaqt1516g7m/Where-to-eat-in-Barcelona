@@ -7,6 +7,15 @@
 	],
 	"folders": [
 		{
+			"id": "a7e5fbe3-7bba-4b38-c41a-73dd6ce9a1fe",
+			"name": "Comments",
+			"description": "",
+			"order": [
+				"cdc2a46f-3a4d-4853-d5b4-1f3d5501d506"
+			],
+			"owner": "165619"
+		},
+		{
 			"id": "822109fb-0fa7-6681-55bc-5afbd170b727",
 			"name": "Restaurant",
 			"description": "",
@@ -268,6 +277,44 @@
 			"helperAttributes": {},
 			"folder": "eb0442bf-28ba-6e49-6492-411343d5756d",
 			"rawModeData": "{\n  \"id\": \"C9203922975011E5AC1BB4BB8D93375C\",\n  \"loginid\": \"SpongeBob\",\n  \"email\": \"spongebob2@bikinibottom.com\",\n  \"fullname\": \"Spongebob Squarepants\"\n}"
+		},
+		{
+			"id": "cdc2a46f-3a4d-4853-d5b4-1f3d5501d506",
+			"headers": "X-Auth-Token: 48E104DE986411E5A864653CFD4047A3\nContent-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/where/restaurant/E3B39DBE9B3411E5811EEFBFEE6E5871/comments",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "title",
+					"value": "test comment1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "comment",
+					"value": "this is a comment1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "likes",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1449596126464,
+			"name": "Create a Comment",
+			"description": "",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"responses": []
 		},
 		{
 			"id": "cf0ee4da-2aa2-dc92-be76-57628c8203e6",
