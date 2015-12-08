@@ -46,6 +46,7 @@ CREATE TABLE comments(
     restaurant BINARY(16) NOT NULL,
     title VARCHAR(100) NOT NULL,
     comment VARCHAR(500) NOT NULL,
+    likes INT NOT NULL,
     response VARCHAR(500) NOT NULL,
     creation_timestamp DATETIME not null default current_timestamp,
     FOREIGN KEY (creator) REFERENCES users(id) on delete cascade,

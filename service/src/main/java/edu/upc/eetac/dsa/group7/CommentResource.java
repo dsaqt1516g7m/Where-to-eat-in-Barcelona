@@ -1,9 +1,6 @@
 package edu.upc.eetac.dsa.group7;
 
-import edu.upc.eetac.dsa.group7.dao.CommentDAO;
-import edu.upc.eetac.dsa.group7.dao.CommentDAOImpl;
-import edu.upc.eetac.dsa.group7.dao.RestaurantDAO;
-import edu.upc.eetac.dsa.group7.dao.RestaurantDAOImpl;
+import edu.upc.eetac.dsa.group7.dao.*;
 import edu.upc.eetac.dsa.group7.entity.AuthToken;
 import edu.upc.eetac.dsa.group7.entity.Comment;
 import edu.upc.eetac.dsa.group7.entity.CommentCollection;
@@ -36,7 +33,7 @@ public class CommentResource {
         Restaurant restaurant = null;
         AuthToken authenticationToken = null;
         try {
-            comment = commentDAO.createComment(securityContext.getUserPrincipal().getName(), restaurantid, title, commentBody);
+            comment = commentDAO.createComment(securityContext.getUserPrincipal().getName(), restaurantid, title, commentBody, likes);
             restaurant = restaurantDAO.voteRestaurant(restaurantid, likes);
         } catch (SQLException e) {
             throw new InternalServerErrorException();
@@ -72,5 +69,22 @@ public class CommentResource {
             throw new InternalServerErrorException();
         }
         return comment;
+    }
+
+    @Path("/{id}")
+    @DELETE
+    public void deleteComment(@PathParam("id") String id) {
+        String userid = securityContext.getUserPrincipal().getName();
+        CommentDAO commentDAO = new CommentDAOImpl();
+        UserDAO userDAO = new UserDAOImpl();
+        try {
+            String creator = commentDAO.getCommentById(id).getCreator();
+            if(!userid.equals(creator) || userDAO.admin(securityContext.getUserPrincipal().getName())==true)
+                throw new ForbiddenException("operation not allowed");
+            if(!commentDAO.deleteComment(id))
+                throw new NotFoundException("Comment with id = "+id+" doesn't exist");
+        } catch (SQLException e) {
+            throw new InternalServerErrorException();
+        }
     }
 }

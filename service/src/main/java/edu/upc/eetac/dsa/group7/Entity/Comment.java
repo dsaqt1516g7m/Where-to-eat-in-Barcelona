@@ -15,6 +15,7 @@ public class Comment {
     private String creator;
     private String restaurant;
     private String title;
+    private int likes;
     private String comment;
     private String response;
     private long creation_timestamp;
@@ -37,6 +38,14 @@ public class Comment {
 
     public String getCreator() {
         return creator;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 
     public void setCreator(String creator) {
