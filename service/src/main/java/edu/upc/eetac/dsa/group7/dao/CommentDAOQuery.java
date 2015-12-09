@@ -11,6 +11,6 @@ public interface CommentDAOQuery {
     public final static String RESPONSE_COMMENT = "update comments set response=? where id=unhex(?) ";
     public final static String DELETE_COMMENT = "delete from comments where id=unhex(?)";
     public final static String VALORATION = "insert into like_restaurant (restaurant, user) values (UNHEX(?), UNHEX(?))";
-    public final static String CHECK_VALORATON = "select hex(restaurant) from like_restaurant where user=unhex(?)";
+    public final static String CHECK_VALORATION = "select hex(restaurant) from like_restaurant where user=unhex(?)";
     public final static String REMOVE_VALORATION = "delete from like_restaurant where restaurant=unhex(?) and user=unhex(?)";
 }

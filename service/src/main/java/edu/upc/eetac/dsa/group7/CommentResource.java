@@ -6,6 +6,7 @@ import edu.upc.eetac.dsa.group7.entity.Comment;
 import edu.upc.eetac.dsa.group7.entity.CommentCollection;
 import edu.upc.eetac.dsa.group7.entity.Restaurant;
 
+import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.net.URI;
@@ -86,5 +87,31 @@ public class CommentResource {
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
+    }
+
+    @Path("/{id}")
+    @PUT
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(WhereMediaType.WHERE_COMMENT)
+    public Comment responseComment(@PathParam("id") String id, @FormParam("response") String response) {
+        if(response == null)
+            throw new BadRequestException("response cannot be null");
+        UserDAO userDAO = new UserDAOImpl();
+        String userid = securityContext.getUserPrincipal().getName();
+        Comment comment;
+
+        CommentDAO commentDAO = new CommentDAOImpl();
+        try {
+            if(userDAO.owner(securityContext.getUserPrincipal().getName())==true) {
+                comment = commentDAO.responseComment(id, response);
+                if (comment==null)
+                    throw new NotFoundException("Comment with id ="+id+" doesn't exists");
+            }else{
+                throw new BadRequestException("Operation not allowed");
+            }
+        } catch (SQLException e) {
+            throw new InternalServerErrorException();
+        }
+        return comment;
     }
 }

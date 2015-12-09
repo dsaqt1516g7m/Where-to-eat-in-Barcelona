@@ -13,7 +13,8 @@
 			"order": [
 				"cdc2a46f-3a4d-4853-d5b4-1f3d5501d506",
 				"2a7130d9-5eeb-186a-93a9-af55bd259422",
-				"65f2fbe7-834d-be63-04a9-6affb4da6f1b"
+				"65f2fbe7-834d-be63-04a9-6affb4da6f1b",
+				"6baac33b-22f8-0c46-73b3-ac4a63a0be26"
 			],
 			"owner": "165619"
 		},
@@ -236,6 +237,32 @@
 			"helperAttributes": {},
 			"time": 1449600550665,
 			"name": "Get Comment",
+			"description": "",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"responses": []
+		},
+		{
+			"id": "6baac33b-22f8-0c46-73b3-ac4a63a0be26",
+			"headers": "X-Auth-Token: F252E5849DDA11E5BD32344DE79C5AED\nContent-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/where/restaurant/E3B39DBE9B3411E5811EEFBFEE6E5871/comments/C948CFC69E4F11E5AD7C137926543200",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [
+				{
+					"key": "response",
+					"value": "this is a response 2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1449650702978,
+			"name": "Response Comment",
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
 			"responses": []

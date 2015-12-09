@@ -32,7 +32,7 @@ public class CommentDAOImpl implements CommentDAO {
                 throw new SQLException();
             stmt=null;
 
-            stmt = connection.prepareStatement(CommentDAOQuery.CHECK_VALORATON);
+            stmt = connection.prepareStatement(CommentDAOQuery.CHECK_VALORATION);
             stmt.setString(1, creator);
             ResultSet rs2 = stmt.executeQuery();
             if (rs2.next()) {
@@ -123,6 +123,7 @@ public class CommentDAOImpl implements CommentDAO {
                 comment.setRestaurant(rs.getString("restaurant"));
                 comment.setTitle(rs.getString("title"));
                 comment.setComment(rs.getString("comment"));
+                comment.setResponse(rs.getString("response"));
                 comment.setLikes(rs.getInt("likes"));
                 comment.setCreation_timestamp(rs.getTimestamp("creation_timestamp").getTime());
 

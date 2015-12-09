@@ -8,7 +8,7 @@ public class WhereMediaType {
     public final static String WHERE_USER = "application/vnd.dsa.where.user+json";
     public final static String WHERE_RESTAURANT = "application/vnd.dsa.where.restaurant+json";
     public final static String WHERE_RESTAURANT_COLLECTION = "application/vnd.dsa.where.restaurant.collection+json";
-    public final static String WHERE_COMMENT = "application/vnd.dsa.where.restaurant.coment+json";
+    public final static String WHERE_COMMENT = "application/vnd.dsa.where.restaurant.comment+json";
     public final static String WHERE_COMMENT_COLLECTION = "application/vnd.dsa.where.restaurant.comment.collection+json";
     public final static String WHERE_ROOT = "application/vnd.dsa.where.root+json";
 }
