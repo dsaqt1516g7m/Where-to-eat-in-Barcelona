@@ -13,5 +13,6 @@ public class WhereResourceConfig extends ResourceConfig {
         packages("edu.upc.eetac.dsa.group7.auth");
         register(RolesAllowedDynamicFeature.class);
         register(DeclarativeLinkingFeature.class);
+        packages("edu.upc.eetac.dsa.where.cors");
     }
 }
