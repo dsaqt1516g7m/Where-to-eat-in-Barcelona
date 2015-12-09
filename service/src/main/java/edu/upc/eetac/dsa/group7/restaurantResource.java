@@ -18,7 +18,7 @@ import java.sql.SQLException;
  * Created by Alex on 1/12/15.
  */
 @Path("restaurant")
-public class restaurantResource {
+public class RestaurantResource {
     @Context
     private SecurityContext securityContext;
 
