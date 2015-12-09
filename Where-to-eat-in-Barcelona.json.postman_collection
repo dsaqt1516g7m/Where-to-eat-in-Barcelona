@@ -3,7 +3,8 @@
 	"name": "Where to eat in Barcelona?",
 	"description": "",
 	"order": [
-		"d0a7919d-b8dd-0505-b902-0c3d231cc166"
+		"d0a7919d-b8dd-0505-b902-0c3d231cc166",
+		"e55cc9dc-23a1-8cb7-8a6f-fc680ac5c417"
 	],
 	"folders": [
 		{
@@ -15,6 +16,15 @@
 				"2a7130d9-5eeb-186a-93a9-af55bd259422",
 				"65f2fbe7-834d-be63-04a9-6affb4da6f1b",
 				"6baac33b-22f8-0c46-73b3-ac4a63a0be26"
+			],
+			"owner": "165619"
+		},
+		{
+			"id": "b0cb8ef8-6f33-e13f-21a9-ea96d9b690bd",
+			"name": "Links",
+			"description": "",
+			"order": [
+				"40d3a8fe-22f9-4b7c-60e7-e206dd3cb5f6"
 			],
 			"owner": "165619"
 		},
@@ -140,6 +150,25 @@
 			"folder": "eb0442bf-28ba-6e49-6492-411343d5756d"
 		},
 		{
+			"id": "40d3a8fe-22f9-4b7c-60e7-e206dd3cb5f6",
+			"headers": "X-Auth-Token: F252E5849DDA11E5BD32344DE79C5AED\n",
+			"url": "http://localhost:8080/where/",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1449656556788,
+			"name": "Home",
+			"description": "",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"responses": []
+		},
+		{
 			"id": "4fb1ac5d-93e2-8687-e0b1-171086b14c66",
 			"headers": "X-Auth-Token: F252E5849DDA11E5BD32344DE79C5AED\nContent-Type: application/x-www-form-urlencoded\n",
 			"url": "http://localhost:8080/where/restaurant",
@@ -204,23 +233,21 @@
 		{
 			"id": "50dbb4e7-fb80-42c4-8d69-8b7cfe2f3891",
 			"headers": "",
-			"url": "http://localhost:8080/where/users/C9203922975011E5AC1BB4BB8D93375C",
-			"pathVariables": {},
+			"url": "http://localhost:8080/where/users/F2528F769DDA11E5BD32344DE79C5AED",
 			"preRequestScript": "",
+			"pathVariables": {},
 			"method": "GET",
-			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
 			"data": [],
-			"dataMode": "urlencoded",
-			"name": "Get User by ID",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1448881272085,
+			"dataMode": "params",
 			"version": 2,
-			"responses": [],
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"folder": "eb0442bf-28ba-6e49-6492-411343d5756d"
+			"time": 1449656526319,
+			"name": "Get User by ID",
+			"description": "",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"responses": []
 		},
 		{
 			"id": "65f2fbe7-834d-be63-04a9-6affb4da6f1b",
@@ -243,7 +270,7 @@
 		},
 		{
 			"id": "6baac33b-22f8-0c46-73b3-ac4a63a0be26",
-			"headers": "X-Auth-Token: F252E5849DDA11E5BD32344DE79C5AED\nContent-Type: application/x-www-form-urlencoded\n",
+			"headers": "X-Auth-Token: F256B2AE9DDA11E5BD32344DE79C5AED\nContent-Type: application/x-www-form-urlencoded\n",
 			"url": "http://localhost:8080/where/restaurant/E3B39DBE9B3411E5811EEFBFEE6E5871/comments/C948CFC69E4F11E5AD7C137926543200",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -251,7 +278,7 @@
 			"data": [
 				{
 					"key": "response",
-					"value": "this is a response 2",
+					"value": "this is a response 4",
 					"type": "text",
 					"enabled": true
 				}
@@ -261,7 +288,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1449650702978,
+			"time": 1449660981622,
 			"name": "Response Comment",
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
@@ -422,6 +449,38 @@
 			"helperAttributes": {},
 			"time": 1448875843118,
 			"name": "Got It!",
+			"description": "",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"responses": []
+		},
+		{
+			"id": "e55cc9dc-23a1-8cb7-8a6f-fc680ac5c417",
+			"headers": "",
+			"url": "http://localhost:8080/where/login",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "login",
+					"value": "alex",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "alex",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1449660978435,
+			"name": "Login",
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
 			"responses": []
