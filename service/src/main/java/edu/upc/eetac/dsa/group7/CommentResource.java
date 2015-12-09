@@ -20,13 +20,14 @@ import java.sql.SQLException;
 public class CommentResource {
     @Context
     private SecurityContext securityContext;
+
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(WhereMediaType.WHERE_COMMENT)
     public Response createComment(@PathParam("restaurantid") String restaurantid, @FormParam("title") String title, @FormParam("comment") String commentBody, @FormParam("likes") int likes, @Context UriInfo uriInfo) throws URISyntaxException {
-        if(title==null || commentBody == null)
+        if (title == null || commentBody == null)
             throw new BadRequestException("all parameters are mandatory");
-        if (likes!=1 && likes!=-1 && likes!=0)
+        if (likes != 1 && likes != -1 && likes != 0)
             throw new BadRequestException("Likes must be 1, -1 or 0");
         CommentDAO commentDAO = new CommentDAOImpl();
         Comment comment = null;
@@ -45,7 +46,7 @@ public class CommentResource {
 
     @GET
     @Produces(WhereMediaType.WHERE_COMMENT_COLLECTION)
-    public CommentCollection getComments(){
+    public CommentCollection getComments() {
         CommentCollection commentCollection = null;
         CommentDAO commentDAO = new CommentDAOImpl();
         try {
@@ -59,13 +60,13 @@ public class CommentResource {
     @Path("/{id}")
     @GET
     @Produces(WhereMediaType.WHERE_COMMENT)
-    public Comment getComment(@PathParam("id") String id){
+    public Comment getComment(@PathParam("id") String id) {
         Comment comment = null;
         CommentDAO commentDAO = new CommentDAOImpl();
         try {
             comment = commentDAO.getCommentById(id);
-            if(comment == null)
-                throw new NotFoundException("Sting with id = "+id+" doesn't exist");
+            if (comment == null)
+                throw new NotFoundException("Sting with id = " + id + " doesn't exist");
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
@@ -80,10 +81,10 @@ public class CommentResource {
         UserDAO userDAO = new UserDAOImpl();
         try {
             String creator = commentDAO.getCommentById(id).getCreator();
-            if(!userid.equals(creator) || userDAO.admin(securityContext.getUserPrincipal().getName())==true)
+            if (!userid.equals(creator) || userDAO.admin(securityContext.getUserPrincipal().getName()) == true)
                 throw new ForbiddenException("operation not allowed");
-            if(!commentDAO.deleteComment(id))
-                throw new NotFoundException("Comment with id = "+id+" doesn't exist");
+            if (!commentDAO.deleteComment(id))
+                throw new NotFoundException("Comment with id = " + id + " doesn't exist");
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
@@ -93,21 +94,22 @@ public class CommentResource {
     @PUT
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(WhereMediaType.WHERE_COMMENT)
-    public Comment responseComment(@PathParam("id") String id, @FormParam("response") String response) {
-        if(response == null)
+    public Comment responseComment(@PathParam("restaurantid") String restaurantid, @PathParam("id") String id, @FormParam("response") String response) {
+        if (response == null)
             throw new BadRequestException("response cannot be null");
         UserDAO userDAO = new UserDAOImpl();
-        String userid = securityContext.getUserPrincipal().getName();
-        Comment comment;
-
+        RestaurantDAO restaurantDAO = new RestaurantDAOImpl();
         CommentDAO commentDAO = new CommentDAOImpl();
+        Comment comment;
         try {
-            if(userDAO.owner(securityContext.getUserPrincipal().getName())==true) {
+            String ownerid= restaurantDAO.getRestaurantById(restaurantid).getOwner();
+            String userid = securityContext.getUserPrincipal().getName();
+            if (ownerid.equals(userid)) {
                 comment = commentDAO.responseComment(id, response);
-                if (comment==null)
-                    throw new NotFoundException("Comment with id ="+id+" doesn't exists");
-            }else{
-                throw new BadRequestException("Operation not allowed");
+                if (comment == null)
+                    throw new NotFoundException("Comment with id =" + id + " doesn't exists");
+            } else {
+                throw new BadRequestException("You must be the owner of the restaurant to write a response");
             }
         } catch (SQLException e) {
             throw new InternalServerErrorException();
