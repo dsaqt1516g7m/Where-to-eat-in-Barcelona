@@ -1,15 +1,31 @@
 package edu.upc.eetac.dsa.group7.entity;
 
+import edu.upc.eetac.dsa.group7.LoginResource;
+import edu.upc.eetac.dsa.group7.RestaurantResource;
+import edu.upc.eetac.dsa.group7.UserResource;
+import edu.upc.eetac.dsa.group7.WhereRootAPIResource;
+import org.glassfish.jersey.linking.Binding;
+import org.glassfish.jersey.linking.InjectLink;
 import org.glassfish.jersey.linking.InjectLinks;
 
 import javax.ws.rs.core.Link;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
  * Created by Alex on 29/11/15.
  */
 public class Restaurant {
-    @InjectLinks({})
+    @InjectLinks({
+            @InjectLink(resource = WhereRootAPIResource.class, style = InjectLink.Style.ABSOLUTE, rel = "home", title = "Where Root API"),
+            @InjectLink(resource = RestaurantResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-restaurants", title = "Current restaurants"),
+            @InjectLink(resource = RestaurantResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-restaurant", title = "Create restaurant", type = MediaType.APPLICATION_FORM_URLENCODED),
+            @InjectLink(resource = RestaurantResource.class, method = "getRestaurant", style = InjectLink.Style.ABSOLUTE, rel = "self restaurant", title = "Restaurant", bindings = @Binding(name = "id", value = "${instance.id}")),
+            @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout"),
+            @InjectLink(resource = UserResource.class, method = "getUser", style = InjectLink.Style.ABSOLUTE, rel = "user-profile", title = "User profile", bindings = @Binding(name = "id", value = "${instance.owner}")),
+            @InjectLink(resource = RestaurantResource.class, method = "getRestaurants", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "More Likes", bindings = {@Binding(name = "likes", value = "${instance.likes}"), @Binding(name = "before", value = "false")}),
+            @InjectLink(resource = RestaurantResource.class, method = "getRestaurants", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Less Likes", bindings = {@Binding(name = "likes", value = "${instance.likes}"), @Binding(name = "before", value = "true")}),
+    })
     private List<Link> links;
     private String id;
     private String name;

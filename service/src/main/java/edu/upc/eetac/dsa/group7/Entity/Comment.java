@@ -1,15 +1,29 @@
 package edu.upc.eetac.dsa.group7.entity;
 
+import edu.upc.eetac.dsa.group7.*;
+import org.glassfish.jersey.linking.Binding;
+import org.glassfish.jersey.linking.InjectLink;
 import org.glassfish.jersey.linking.InjectLinks;
 
 import javax.ws.rs.core.Link;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
  * Created by Alex on 29/11/15.
  */
 public class Comment {
-    @InjectLinks({})
+    @InjectLinks({
+            @InjectLink(resource = WhereRootAPIResource.class, style = InjectLink.Style.ABSOLUTE, rel = "home", title = "Where Root API"),
+            @InjectLink(resource = CommentResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-comments", title = "Current comments"),
+            @InjectLink(resource = CommentResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-comment", title = "Create comment", type = MediaType.APPLICATION_FORM_URLENCODED),
+            @InjectLink(resource = CommentResource.class, method = "getComment", style = InjectLink.Style.ABSOLUTE, rel = "self comment", title = "Comment", bindings = @Binding(name = "id", value = "${instance.id}")),
+            @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout"),
+            @InjectLink(resource = UserResource.class, method = "getUser", style = InjectLink.Style.ABSOLUTE, rel = "user-profile", title = "User profile", bindings = @Binding(name = "creator", value = "${instance.creator}")),
+            @InjectLink(resource = RestaurantResource.class, method = "getRestaurant", style = InjectLink.Style.ABSOLUTE, rel = "restaurant-profile", title = "Restaurant profile", bindings = @Binding(name = "restaurant", value = "${instance.restaurant}")),
+            @InjectLink(resource = CommentResource.class, method = "getComments", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer comments", bindings = {@Binding(name = "timestamp", value = "${instance.creation_timestamp}"), @Binding(name = "before", value = "false")}),
+            @InjectLink(resource = CommentResource.class, method = "getComments", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older comments", bindings = {@Binding(name = "timestamp", value = "${instance.creation_timestamp}"), @Binding(name = "before", value = "true")}),
+    })
     private List<Link> links;
     private String id;
     private String creator;
