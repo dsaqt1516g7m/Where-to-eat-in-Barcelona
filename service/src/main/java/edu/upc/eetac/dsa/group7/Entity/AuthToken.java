@@ -23,6 +23,7 @@ public class AuthToken {
     private List<Link> links;
 
     private String userid;
+
     private String token;
 
     public List<Link> getLinks() {
