@@ -1,7 +1,5 @@
 package edu.upc.eetac.dsa.group7;
 
-import edu.upc.eetac.dsa.group7.entity.WhereError;
-
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;

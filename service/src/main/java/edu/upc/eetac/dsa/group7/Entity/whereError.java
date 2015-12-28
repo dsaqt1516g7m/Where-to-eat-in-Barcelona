@@ -1,7 +1,7 @@
 package edu.upc.eetac.dsa.group7.entity;
 
 /**
- * Created by Alex on 29/11/15.
+ * Created by Alex on 28/12/15.
  */
 public class WhereError {
     private int status;
