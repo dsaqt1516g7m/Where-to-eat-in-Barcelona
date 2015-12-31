@@ -18,9 +18,7 @@ public class RestaurantCollection {
             @InjectLink(resource = RestaurantResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-restaurants", title = "Current restaurants"),
             @InjectLink(resource = RestaurantResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-restaurants", title = "Current restaurants"),
             @InjectLink(resource = RestaurantResource.class, method = "getRestaurants", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "More likes", bindings = {@Binding(name = "likes", value = "${instance.likes}"), @Binding(name = "before", value = "false")}),
-            @InjectLink(resource = RestaurantResource.class, method = "getRestaurants", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Less likes", bindings = {@Binding(name = "likes", value = "${instance.likes}"), @Binding(name = "before", value = "true")}),
-            @InjectLink(resource = CommentResource.class, style = InjectLink.Style.ABSOLUTE, rel = "comments", title = "comments", type= WhereMediaType.WHERE_COMMENT_COLLECTION),
-            @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout")
+            @InjectLink(resource = RestaurantResource.class, method = "getRestaurants", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Less likes", bindings = {@Binding(name = "likes", value = "${instance.likes}"), @Binding(name = "before", value = "true")})
     })
     private List<Link> links;
     private long newestTimestamp;

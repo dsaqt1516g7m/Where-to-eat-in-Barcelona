@@ -85,7 +85,7 @@ public class CommentResource {
             comment = commentDAO.getCommentById(id);
             if (comment == null)
                 //return an error if not exists
-                throw new NotFoundException("Sting with id = " + id + " doesn't exist");
+                throw new NotFoundException("Comment with id = " + id + " doesn't exist");
         } catch (SQLException e) {
             //return an error if the sql query fails
             throw new InternalServerErrorException();
