@@ -11,7 +11,6 @@ import java.util.Properties;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
-
 public class Database {
     private static Database instance = null;
     private DataSource ds;
