@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa.group7.dao;
+package edu.upc.eetac.dsa.group7.db;
 
 
 import com.zaxxer.hikari.HikariConfig;

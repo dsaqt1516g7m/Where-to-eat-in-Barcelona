@@ -1,6 +1,6 @@
 package edu.upc.eetac.dsa.group7.dao;
 
-import edu.upc.eetac.dsa.group7.entity.Role;
+import edu.upc.eetac.dsa.group7.db.Database;
 import edu.upc.eetac.dsa.group7.entity.User;
 
 import java.math.BigInteger;

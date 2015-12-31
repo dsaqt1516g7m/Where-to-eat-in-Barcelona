@@ -1,5 +1,6 @@
 package edu.upc.eetac.dsa.group7.dao;
 
+import edu.upc.eetac.dsa.group7.db.Database;
 import edu.upc.eetac.dsa.group7.entity.Comment;
 import edu.upc.eetac.dsa.group7.entity.CommentCollection;
 import edu.upc.eetac.dsa.group7.entity.Restaurant;

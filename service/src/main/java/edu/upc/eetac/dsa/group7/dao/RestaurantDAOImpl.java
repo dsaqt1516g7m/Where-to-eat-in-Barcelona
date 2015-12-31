@@ -1,5 +1,6 @@
 package edu.upc.eetac.dsa.group7.dao;
 
+import edu.upc.eetac.dsa.group7.db.Database;
 import edu.upc.eetac.dsa.group7.entity.Restaurant;
 import edu.upc.eetac.dsa.group7.entity.RestaurantCollection;
 
@@ -7,7 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DecimalFormat;
 
 /**
  * Created by Alex on 29/11/15.
