@@ -62,8 +62,8 @@
 	"requests": [
 		{
 			"id": "0184ffc3-3834-a4b5-533c-5918ef36a5b6",
-			"headers": "X-Auth-Token: 7842F2347B0211E593FDAF518ABF1D56\nContent-Type: application/x-www-form-urlencoded\n",
-			"url": "http://localhost:8080/grouptalk/groups/783B34FE7B0211E593FDAF518ABF1D56/90E1FE1C7B4211E593FDAF518ABF1D56",
+			"headers": "X-Auth-Token: 45D72D6CAE4511E58DC9FAF7E5943960\nContent-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/where/restaurant/027FD3FA9E5211E5AD7C137926543200",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "DELETE",
@@ -73,14 +73,11 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1445851172369,
+			"time": 1451549768954,
 			"name": "Delete restaurant",
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
-			"responses": [],
-			"folder": "822109fb-0fa7-6681-55bc-5afbd170b727",
-			"isFromCollection": true,
-			"collectionRequestId": "e634500f-bfc7-e788-e132-af2e17b8b142"
+			"responses": []
 		},
 		{
 			"id": "2a7130d9-5eeb-186a-93a9-af55bd259422",
@@ -106,11 +103,10 @@
 		{
 			"id": "2ac7fca1-9ef2-bd7c-7f02-52fdf9a70696",
 			"headers": "",
-			"url": "http://localhost:8080/where/users",
-			"pathVariables": {},
+			"url": "http://147.83.7.206:8080/where/users",
 			"preRequestScript": "",
+			"pathVariables": {},
 			"method": "POST",
-			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
 			"data": [
 				{
 					"key": "loginid",
@@ -138,16 +134,15 @@
 				}
 			],
 			"dataMode": "urlencoded",
-			"name": "Create User",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1448881077867,
 			"version": 2,
-			"responses": [],
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"folder": "eb0442bf-28ba-6e49-6492-411343d5756d"
+			"time": 1451338415633,
+			"name": "Create User",
+			"description": "",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"responses": []
 		},
 		{
 			"id": "40d3a8fe-22f9-4b7c-60e7-e206dd3cb5f6",
@@ -170,7 +165,7 @@
 		},
 		{
 			"id": "4fb1ac5d-93e2-8687-e0b1-171086b14c66",
-			"headers": "X-Auth-Token: F252E5849DDA11E5BD32344DE79C5AED\nContent-Type: application/x-www-form-urlencoded\n",
+			"headers": "X-Auth-Token: F256B2AE9DDA11E5BD32344DE79C5AED\nContent-Type: application/x-www-form-urlencoded\n",
 			"url": "http://localhost:8080/where/restaurant",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -184,7 +179,7 @@
 				},
 				{
 					"key": "description",
-					"value": "description of the first restaurant",
+					"value": "description of the first restaurant for response",
 					"type": "text",
 					"enabled": true
 				},
@@ -224,7 +219,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1449600089086,
+			"time": 1449692019988,
 			"name": "Create a Restaurant",
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
@@ -233,7 +228,7 @@
 		{
 			"id": "50dbb4e7-fb80-42c4-8d69-8b7cfe2f3891",
 			"headers": "",
-			"url": "http://localhost:8080/where/users/F2528F769DDA11E5BD32344DE79C5AED",
+			"url": "http://147.83.7.206:8080/where/users/F2528F769DDA11E5BD32344DE79C5AED",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
@@ -243,7 +238,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1449656526319,
+			"time": 1451338410277,
 			"name": "Get User by ID",
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
@@ -271,7 +266,7 @@
 		{
 			"id": "6baac33b-22f8-0c46-73b3-ac4a63a0be26",
 			"headers": "X-Auth-Token: F256B2AE9DDA11E5BD32344DE79C5AED\nContent-Type: application/x-www-form-urlencoded\n",
-			"url": "http://localhost:8080/where/restaurant/E3B39DBE9B3411E5811EEFBFEE6E5871/comments/C948CFC69E4F11E5AD7C137926543200",
+			"url": "http://localhost:8080/where/restaurant/2E7941F89EB111E5AD7C137926543200/comments/3C4AD2B09EB111E5AD7C137926543200",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "PUT",
@@ -288,7 +283,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1449660981622,
+			"time": 1449692018571,
 			"name": "Response Comment",
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
@@ -297,7 +292,7 @@
 		{
 			"id": "7432ad5e-525b-74cc-0e50-26821bccc440",
 			"headers": "Content-Type: application/x-www-form-urlencoded\n",
-			"url": "http://localhost:8080/where/restaurant",
+			"url": "http://147.83.7.206:8080/where/restaurant",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
@@ -307,7 +302,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1449309049583,
+			"time": 1451338412857,
 			"name": "Restaurant Collection",
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
@@ -376,15 +371,15 @@
 		},
 		{
 			"id": "cdc2a46f-3a4d-4853-d5b4-1f3d5501d506",
-			"headers": "X-Auth-Token: F252E5849DDA11E5BD32344DE79C5AED\nContent-Type: application/x-www-form-urlencoded\n",
-			"url": "http://localhost:8080/where/restaurant/32528FE09DDB11E5BD32344DE79C5AED/comments",
+			"headers": "X-Auth-Token: F256B2AE9DDA11E5BD32344DE79C5AED\nContent-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8080/where/restaurant/2E7941F89EB111E5AD7C137926543200/comments",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
 			"data": [
 				{
 					"key": "title",
-					"value": "test comment1",
+					"value": "test comment1 for response",
 					"type": "text",
 					"enabled": true
 				},
@@ -406,7 +401,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1449600137408,
+			"time": 1449692021231,
 			"name": "Create a Comment",
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
@@ -437,7 +432,7 @@
 		{
 			"id": "d0a7919d-b8dd-0505-b902-0c3d231cc166",
 			"headers": "",
-			"url": "http://localhost:8080/where/myresource",
+			"url": "http://147.83.7.206:8080/where/myresource",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
@@ -447,7 +442,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1448875843118,
+			"time": 1451338411813,
 			"name": "Got It!",
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
@@ -456,7 +451,7 @@
 		{
 			"id": "e55cc9dc-23a1-8cb7-8a6f-fc680ac5c417",
 			"headers": "",
-			"url": "http://localhost:8080/where/login",
+			"url": "http://147.83.7.206:8080/where/login",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "POST",
@@ -479,7 +474,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1449660978435,
+			"time": 1451338414692,
 			"name": "Login",
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
