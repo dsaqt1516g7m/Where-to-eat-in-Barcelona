@@ -27,7 +27,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
             connection = Database.getConnection();
 
             stmt = connection.prepareStatement(RestaurantDAOQuery.UUID);
-            //creatio of the restaurant id
+            //creation of the restaurant id
             ResultSet rs = stmt.executeQuery();
             if (rs.next())
                 id = rs.getString(1);

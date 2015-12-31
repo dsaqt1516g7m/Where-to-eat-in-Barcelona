@@ -27,7 +27,7 @@ public class RestaurantResource {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(WhereMediaType.WHERE_RESTAURANT)
     //method to create restaurants, needed: name, description, avg price, address, phone, latitude and longitude
-    public Response createRestaurant(@FormParam("name") String name, @FormParam("description") String description, @FormParam("avgprice") Float avgprice, @FormParam("address") String address, @FormParam("phone") String phone, @FormParam("lat") Float lat, @FormParam("lng") Float lng, @Context UriInfo uriInfo) throws URISyntaxException {
+    public Restaurant createRestaurant(@FormParam("name") String name, @FormParam("description") String description, @FormParam("avgprice") Float avgprice, @FormParam("address") String address, @FormParam("phone") String phone, @FormParam("lat") Float lat, @FormParam("lng") Float lng, @Context UriInfo uriInfo) throws URISyntaxException {
         if (name == null || description == null || avgprice == null || address == null || phone == null || lat == null || lng == null) {
             throw new BadRequestException("all parameters are mandatory");
             //check if all the paramenters are correct
@@ -38,7 +38,7 @@ public class RestaurantResource {
         Restaurant restaurant;
         AuthToken authenticationToken = null;
         try {
-            if (userDAO.owner(securityContext.getUserPrincipal().getName()) == true) {
+            if (userDAO.owner(securityContext.getUserPrincipal().getName()) == true || userDAO.admin(securityContext.getUserPrincipal().getName()) == true) {
                 //call the function to add the restaurant to database
                 restaurant = restaurantDAO.createRestaurant(name, description, avgprice, securityContext.getUserPrincipal().getName(), address, phone, lat, lng);
             } else {
@@ -50,7 +50,7 @@ public class RestaurantResource {
             throw new InternalServerErrorException();
         }
         URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + restaurant.getId());
-        return Response.created(uri).type(WhereMediaType.WHERE_RESTAURANT).entity(restaurant).build();
+        return restaurant;
     }
 
     @GET
@@ -72,7 +72,7 @@ public class RestaurantResource {
     @Path("/{id}")
     @GET
     @Produces(WhereMediaType.WHERE_RESTAURANT)
-    public Restaurant getRetaurants(@PathParam("id") String id) {
+    public Restaurant getRestaurant(@PathParam("id") String id) {
         Restaurant restaurant = null;
         RestaurantDAO restaurantDAO = new RestaurantDAOImpl();
         try {
