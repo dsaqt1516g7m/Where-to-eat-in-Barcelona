@@ -31,7 +31,7 @@ CREATE TABLE restaurants (
     name VARCHAR(100) NOT NULL,
     description VARCHAR(500) NOT NULL,
     avgprice FLOAT NOT NULL,
-    owner VARCHAR(100) NOT NULL,
+    owner BINARY(16) NOT NULL,
     likes INT NOT NULL,
     address VARCHAR(100) NOT NULL,
     phone VARCHAR(9) NOT NULL,
