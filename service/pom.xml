@@ -39,12 +39,7 @@
             <version>4.9</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- Declarative hyperlinking -->
-        <dependency>
-            <groupId>org.glassfish.jersey.ext</groupId>
-            <artifactId>jersey-declarative-linking</artifactId>
-        </dependency>
+        
 
         <!-- Java Expession Language -->
         <dependency>
