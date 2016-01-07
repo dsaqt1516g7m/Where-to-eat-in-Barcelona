@@ -260,4 +260,44 @@ public class RestaurantDAOImpl implements RestaurantDAO {
         return restaurant;
         //return the restaurant to print
     }
+
+    @Override
+    public Restaurant searchRestaurant(String word) throws SQLException {
+        Restaurant restaurant = null;
+        //Initialization of parameters
+
+        Connection connection = null;
+        PreparedStatement stmt = null;
+        try {
+            connection = Database.getConnection();
+
+            stmt = connection.prepareStatement(RestaurantDAOQuery.SEARCH_RESTAURANT);
+            stmt.setString(1, word);
+
+            ResultSet rs = stmt.executeQuery();
+            //store data from database
+            if (rs.next()) {
+                restaurant = new Restaurant();
+                restaurant.setId(rs.getString("id"));
+                restaurant.setName(rs.getString("name"));
+                restaurant.setDescription(rs.getString("description"));
+                restaurant.setAvgprice(rs.getFloat("avgprice"));
+                restaurant.setOwner(rs.getString("owner"));
+                restaurant.setLikes(rs.getInt("likes"));
+                restaurant.setAddress(rs.getString("address"));
+                restaurant.setPhone(rs.getString("phone"));
+                restaurant.setLat(rs.getFloat("lat"));
+                restaurant.setLng(rs.getFloat("lng"));
+            }
+        } catch (SQLException e) {
+            throw e;
+            //catch errors
+        } finally {
+            //close connection
+            if (stmt != null) stmt.close();
+            if (connection != null) connection.close();
+        }
+        //return data for printing
+        return restaurant;
+    }
 }

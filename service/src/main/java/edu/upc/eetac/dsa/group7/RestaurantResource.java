@@ -148,4 +148,21 @@ public class RestaurantResource {
             throw new InternalServerErrorException();
         }
     }
+
+    @Path("/search/{word}")
+    @GET
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(WhereMediaType.WHERE_RESTAURANT)
+    public Restaurant searchRestaurant(@PathParam("word") String word) {
+        Restaurant restaurant = null;
+        RestaurantDAO restaurantDAO = new RestaurantDAOImpl();
+        try {
+            restaurant = restaurantDAO.searchRestaurant(word);
+            if (restaurant == null)
+                throw new NotFoundException("No matches found with "+word+" try another word");
+        } catch (SQLException e) {
+            throw new InternalServerErrorException();
+        }
+        return restaurant;
+    }
 }

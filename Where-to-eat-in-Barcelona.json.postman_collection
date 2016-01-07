@@ -37,7 +37,8 @@
 				"7432ad5e-525b-74cc-0e50-26821bccc440",
 				"c2d7b177-00bc-e99b-c2cd-025ad444cddd",
 				"8a3ba960-2d47-0d1b-100f-040d5001a78b",
-				"0184ffc3-3834-a4b5-533c-5918ef36a5b6"
+				"0184ffc3-3834-a4b5-533c-5918ef36a5b6",
+				"d72ddb87-7934-88bd-908e-16a22d610be8"
 			],
 			"owner": "165619",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99"
@@ -165,7 +166,7 @@
 		},
 		{
 			"id": "4fb1ac5d-93e2-8687-e0b1-171086b14c66",
-			"headers": "X-Auth-Token: F256B2AE9DDA11E5BD32344DE79C5AED\nContent-Type: application/x-www-form-urlencoded\n",
+			"headers": "X-Auth-Token: B52940CCB3B011E5BB7B2308BB96BBE5\nContent-Type: application/x-www-form-urlencoded\n",
 			"url": "http://localhost:8080/where/restaurant",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -219,7 +220,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1449692019988,
+			"time": 1452181497153,
 			"name": "Create a Restaurant",
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
@@ -447,6 +448,27 @@
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
 			"responses": []
+		},
+		{
+			"id": "d72ddb87-7934-88bd-908e-16a22d610be8",
+			"headers": "X-Auth-Token: B52940CCB3B011E5BB7B2308BB96BBE5\n",
+			"url": "http://localhost:8080/where/restaurant/search/restaurant",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"data": [],
+			"dataMode": "params",
+			"name": "Search by name",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1452182810871,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "822109fb-0fa7-6681-55bc-5afbd170b727"
 		},
 		{
 			"id": "e55cc9dc-23a1-8cb7-8a6f-fc680ac5c417",

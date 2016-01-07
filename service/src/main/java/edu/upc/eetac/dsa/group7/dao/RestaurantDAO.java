@@ -15,4 +15,5 @@ public interface RestaurantDAO {
     public Restaurant updateRestaurant(String id, String description, Float avgprice, String phone) throws SQLException;
     public boolean deleteRestaurant(String id) throws SQLException;
     public Restaurant voteRestaurant(String id, int likes) throws SQLException;
+    public Restaurant searchRestaurant(String word) throws SQLException;
 }
