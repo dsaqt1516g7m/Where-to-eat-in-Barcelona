@@ -1,21 +1,17 @@
 package edu.upc.eetac.dsa.group7.dao;
-
 import edu.upc.eetac.dsa.group7.db.Database;
 import edu.upc.eetac.dsa.group7.entity.Comment;
 import edu.upc.eetac.dsa.group7.entity.CommentCollection;
 import edu.upc.eetac.dsa.group7.entity.Restaurant;
-
 import javax.ws.rs.BadRequestException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 /**
  * Created by Alex on 29/11/15.
  */
 public class CommentDAOImpl implements CommentDAO {
-
     @Override
     //Function to create a comment giving creator identifier, restaurant identifier, title, comment and likes
     public Comment createComment(String creator, String restaurant, String title, String comment, int likes) throws SQLException {
@@ -36,7 +32,6 @@ public class CommentDAOImpl implements CommentDAO {
             else
                 throw new SQLException();
             stmt = null;
-
             //check if this user has commented before this restaurant
             stmt = connection.prepareStatement(CommentDAOQuery.CHECK_VALORATION);
             stmt.setString(1, creator);
@@ -57,7 +52,6 @@ public class CommentDAOImpl implements CommentDAO {
             stmt.setInt(6, likes);
             stmt.setString(7, response);
             stmt.executeUpdate();
-
             stmt = null;
             //Store the valoration in the database
             stmt = connection.prepareStatement(CommentDAOQuery.VALORATION);
@@ -65,7 +59,6 @@ public class CommentDAOImpl implements CommentDAO {
             stmt.setString(2, creator);
             stmt.executeUpdate();
             stmt = null;
-
         } catch (SQLException e) {
             throw e;
             //thow an error if anything fails
@@ -80,7 +73,6 @@ public class CommentDAOImpl implements CommentDAO {
         //return the comment
         return getCommentById(id);
     }
-
     @Override
     public Comment getCommentById(String id) throws SQLException {
         Comment comment = null;
@@ -92,7 +84,6 @@ public class CommentDAOImpl implements CommentDAO {
             //try the connection
             stmt = connection.prepareStatement(CommentDAOQuery.GET_COMMENT_BY_ID);
             stmt.setString(1, id);
-
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 //store data from database
@@ -116,9 +107,8 @@ public class CommentDAOImpl implements CommentDAO {
         return comment;
         //return the comment from the database
     }
-
     @Override
-    public CommentCollection getComemnts() throws SQLException {
+    public CommentCollection getComments(String restaurantid) throws SQLException {
         CommentCollection commentCollection = new CommentCollection();
         //prepare the conection
         Connection connection = null;
@@ -126,7 +116,7 @@ public class CommentDAOImpl implements CommentDAO {
         try {
             connection = Database.getConnection();
             stmt = connection.prepareStatement(CommentDAOQuery.GET_COMMENTS);
-
+            stmt.setString(1, restaurantid);
             ResultSet rs = stmt.executeQuery();
             boolean first = true;
             while (rs.next()) {
@@ -140,7 +130,6 @@ public class CommentDAOImpl implements CommentDAO {
                 comment.setResponse(rs.getString("response"));
                 comment.setLikes(rs.getInt("likes"));
                 comment.setCreation_timestamp(rs.getTimestamp("creation_timestamp").getTime());
-
                 commentCollection.getComments().add(comment);
             }
         } catch (SQLException e) {
@@ -154,7 +143,6 @@ public class CommentDAOImpl implements CommentDAO {
         return commentCollection;
         //return the comment collection
     }
-
     @Override
     public Comment responseComment(String id, String response) throws SQLException {
         Comment comment = null;
@@ -167,7 +155,6 @@ public class CommentDAOImpl implements CommentDAO {
             stmt = connection.prepareStatement(CommentDAOQuery.RESPONSE_COMMENT);
             stmt.setString(1, response);
             stmt.setString(2, id);
-
             int rows = stmt.executeUpdate();
             if (rows == 1)
                 comment = getCommentById(id);
@@ -182,7 +169,6 @@ public class CommentDAOImpl implements CommentDAO {
         //return the comment to print it
         return comment;
     }
-
     @Override
     public boolean deleteComment(String id) throws SQLException {
         //Initiates the database connection and the variables needed
@@ -199,7 +185,6 @@ public class CommentDAOImpl implements CommentDAO {
         int likesComment = comment.getLikes();
         // operates to achieve the result of the likes
         likes = restaurantLikes - likesComment;
-
         try {
             //initiates the database collection
             connection = Database.getConnection();
@@ -209,7 +194,6 @@ public class CommentDAOImpl implements CommentDAO {
             stmt.setString(2, comment.getRestaurant());
             stmt.executeUpdate();
             stmt = null;
-
             //remove the vote of the valoration table
             //now the user can comment again
             stmt = connection.prepareStatement(CommentDAOQuery.REMOVE_VALORATION);
@@ -217,11 +201,9 @@ public class CommentDAOImpl implements CommentDAO {
             stmt.setString(2, comment.getCreator());
             stmt.executeUpdate();
             stmt = null;
-
             //delete the comment of the database
             stmt = connection.prepareStatement(CommentDAOQuery.DELETE_COMMENT);
             stmt.setString(1, id);
-
             int rows = stmt.executeUpdate();
             return (rows == 1);
         } catch (SQLException e) {
@@ -233,5 +215,4 @@ public class CommentDAOImpl implements CommentDAO {
             if (connection != null) connection.close();
         }
     }
-
 }

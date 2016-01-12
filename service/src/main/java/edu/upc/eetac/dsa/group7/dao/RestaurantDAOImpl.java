@@ -262,8 +262,8 @@ public class RestaurantDAOImpl implements RestaurantDAO {
     }
 
     @Override
-    public Restaurant searchRestaurant(String word) throws SQLException {
-        Restaurant restaurant = null;
+    public RestaurantCollection searchRestaurant(String word) throws SQLException {
+        RestaurantCollection restaurantCollection = new RestaurantCollection();
         //Initialization of parameters
 
         Connection connection = null;
@@ -276,8 +276,9 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 
             ResultSet rs = stmt.executeQuery();
             //store data from database
-            if (rs.next()) {
-                restaurant = new Restaurant();
+            boolean first = true;
+            while (rs.next()) {
+                Restaurant restaurant = new Restaurant();
                 restaurant.setId(rs.getString("id"));
                 restaurant.setName(rs.getString("name"));
                 restaurant.setDescription(rs.getString("description"));
@@ -288,6 +289,8 @@ public class RestaurantDAOImpl implements RestaurantDAO {
                 restaurant.setPhone(rs.getString("phone"));
                 restaurant.setLat(rs.getFloat("lat"));
                 restaurant.setLng(rs.getFloat("lng"));
+
+                restaurantCollection.getRestaurants().add(restaurant);
             }
         } catch (SQLException e) {
             throw e;
@@ -298,6 +301,6 @@ public class RestaurantDAOImpl implements RestaurantDAO {
             if (connection != null) connection.close();
         }
         //return data for printing
-        return restaurant;
+        return restaurantCollection;
     }
 }

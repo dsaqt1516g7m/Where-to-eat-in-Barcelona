@@ -151,18 +151,17 @@ public class RestaurantResource {
 
     @Path("/search/{word}")
     @GET
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(WhereMediaType.WHERE_RESTAURANT)
-    public Restaurant searchRestaurant(@PathParam("word") String word) {
-        Restaurant restaurant = null;
+    public RestaurantCollection searchRestaurant(@PathParam("word") String word) {
+        RestaurantCollection restaurantCollection = null;
         RestaurantDAO restaurantDAO = new RestaurantDAOImpl();
         try {
-            restaurant = restaurantDAO.searchRestaurant(word);
-            if (restaurant == null)
+            restaurantCollection = restaurantDAO.searchRestaurant(word);
+            if (restaurantCollection == null)
                 throw new NotFoundException("No matches found with "+word+" try another word");
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
-        return restaurant;
+        return restaurantCollection;
     }
 }

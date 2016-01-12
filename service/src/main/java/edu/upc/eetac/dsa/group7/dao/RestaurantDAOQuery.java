@@ -11,5 +11,5 @@ public interface RestaurantDAOQuery {
     public final static String UPDATE_RESTAURANT = "update restaurants set description=?, avgprice=?, phone=? where id=unhex(?) ";
     public final static String DELETE_RESTAURANT = "delete from restaurants where id=unhex(?)";
     public final static String VOTE_RESTAURANT = "update restaurants set likes=? where id=unhex(?)";
-    public final static String SEARCH_RESTAURANT = "select hex(r.id) as id, hex(r.owner) as owner, r.name, r.description, r.avgprice, r.likes, r.address, r.phone, r.lat, r.lng, u.fullname from restaurants r, users u where u.id=r.owner and r.name LIKE '%' || ? || '%'";
+    public final static String SEARCH_RESTAURANT = "select hex(r.id) as id, hex(r.owner) as owner, r.name, r.description, r.avgprice, r.likes, r.address, r.phone, r.lat, r.lng, u.fullname from restaurants r, users u where u.id=r.owner and r.name LIKE '%' ? '%'";
 }

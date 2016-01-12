@@ -1,29 +1,24 @@
 package edu.upc.eetac.dsa.group7;
-
 import edu.upc.eetac.dsa.group7.dao.*;
 import edu.upc.eetac.dsa.group7.entity.AuthToken;
 import edu.upc.eetac.dsa.group7.entity.Comment;
 import edu.upc.eetac.dsa.group7.entity.CommentCollection;
 import edu.upc.eetac.dsa.group7.entity.Restaurant;
-
 import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
-
 /**
  * Created by Alex on 7/12/15.
  */
-
 //Methods related to comments
 //Path with the commented restaurant identifier
 @Path("/restaurant/{restaurantid}/comments")
 public class CommentResource {
     @Context
     private SecurityContext securityContext;
-
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(WhereMediaType.WHERE_COMMENT)
@@ -56,23 +51,21 @@ public class CommentResource {
         //send back the created comment
         return Response.created(uri).type(WhereMediaType.WHERE_COMMENT).entity(comment).build();
     }
-
     @GET
     @Produces(WhereMediaType.WHERE_COMMENT_COLLECTION)
     //method to get all the comments
-    public CommentCollection getComments() {
+    public CommentCollection getComments(@PathParam("restaurantid") String restaurantid) {
         //initiates variables and call the function to print all the comments of the restaurant
         CommentCollection commentCollection = null;
         CommentDAO commentDAO = new CommentDAOImpl();
         try {
-            commentCollection = commentDAO.getComemnts();
+            commentCollection = commentDAO.getComments(restaurantid);
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
         //return all the comments of this restaurant
         return commentCollection;
     }
-
     @Path("/{id}")
     @GET
     @Produces(WhereMediaType.WHERE_COMMENT)
@@ -92,7 +85,6 @@ public class CommentResource {
         }
         return comment;
     }
-
     @Path("/{id}")
     @DELETE
     //method to delete a comment giving its id
@@ -116,7 +108,6 @@ public class CommentResource {
             throw new InternalServerErrorException();
         }
     }
-
     @Path("/{id}")
     @PUT
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
