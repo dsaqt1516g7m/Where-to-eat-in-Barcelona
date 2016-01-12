@@ -174,7 +174,7 @@
 			"data": [
 				{
 					"key": "name",
-					"value": "Test Restaurant 1",
+					"value": "Bar1",
 					"type": "text",
 					"enabled": true
 				},
@@ -220,7 +220,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1452181497153,
+			"time": 1452623404366,
 			"name": "Create a Restaurant",
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
@@ -293,7 +293,7 @@
 		{
 			"id": "7432ad5e-525b-74cc-0e50-26821bccc440",
 			"headers": "Content-Type: application/x-www-form-urlencoded\n",
-			"url": "http://147.83.7.206:8080/where/restaurant",
+			"url": "http://localhost:8080/where/restaurant",
 			"preRequestScript": "",
 			"pathVariables": {},
 			"method": "GET",
@@ -303,7 +303,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1451338412857,
+			"time": 1452623401921,
 			"name": "Restaurant Collection",
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
@@ -452,23 +452,21 @@
 		{
 			"id": "d72ddb87-7934-88bd-908e-16a22d610be8",
 			"headers": "X-Auth-Token: B52940CCB3B011E5BB7B2308BB96BBE5\n",
-			"url": "http://localhost:8080/where/restaurant/search/restaurant",
-			"pathVariables": {},
+			"url": "http://localhost:8080/where/restaurant/search/Res",
 			"preRequestScript": "",
+			"pathVariables": {},
 			"method": "GET",
-			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
 			"data": [],
 			"dataMode": "params",
-			"name": "Search by name",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1452182810871,
 			"version": 2,
-			"responses": [],
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"folder": "822109fb-0fa7-6681-55bc-5afbd170b727"
+			"time": 1452623400146,
+			"name": "Search by name",
+			"description": "",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"responses": []
 		},
 		{
 			"id": "e55cc9dc-23a1-8cb7-8a6f-fc680ac5c417",
