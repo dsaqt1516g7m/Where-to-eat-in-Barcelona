@@ -96,7 +96,7 @@ public class CommentResource {
         try {
             //check if the comment was created by the same user, or if you are the admin
             String creator = commentDAO.getCommentById(id).getCreator();
-            if (!userid.equals(creator) || userDAO.admin(securityContext.getUserPrincipal().getName()) == true) {
+            if (!userid.equals(creator) || userDAO.admin(securityContext.getUserPrincipal().getName()) == false) {
                 throw new ForbiddenException("operation not allowed");
                 //throw an error if any condition isn't acomplished
             }
