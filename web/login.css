@@ -1,0 +1,99 @@
+body {
+ 
+  color: #FFFFCC;
+  font-family: 'Lato', sans-serif;
+}
+.sqr{
+background-color:#7E7E7E;
+border-radius:6px 6px 6px 6px;
+width:35px;
+height:35px;
+margin-left:15px;
+margin-right:15px;
+float:left;
+}
+.footer{
+text-align:center;
+}
+.header1{
+text-align:justify;
+}
+.header{
+font-weight:bolder;
+text-align:center;
+}
+#myCarousel{
+vertical-align:middle;
+}
+#container
+{
+width: 1000px;
+margin-left:auto;
+margin-right:auto;
+border-style: groove;
+
+
+}
+.rectangle
+{
+width: 960px;
+margin:20px;
+border-style: groove;
+}
+.square
+{
+    height:365px;
+	width: 450px;
+	margin:20px;
+	float: left;
+	border-style: groove;
+	
+}
+.form-login {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-login .form-login-heading,
+.form-login .checkbox {
+  margin-bottom: 10px;
+}
+.form-login .checkbox {
+  font-weight: normal;
+}
+.form-login .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-login .form-control:focus {
+  z-index: 2;
+}
+.form-login input[type="email"] {
+  margin-bottom: -1px;
+
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-login input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.btn btn-lg btn-primary btn-block{
+    cursor:pointer;
+    width: 150px;
+    height: 100px;
+    border:groove ;
+
+
+}
+.btn-primary {
+    color: #fff;
+    background-color: #777;
+    border-color: #999;
+}

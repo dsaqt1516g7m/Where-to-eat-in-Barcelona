@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link rel="stylesheet" href="fontello/css/fontello.css" type="text/css"/>
+
+    <title>Profile</title>
+
+
+    <link href="signin.css" rel="stylesheet">
+
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="shortcut icon" href="images/food.png" type="image/png" />
+  
+    <style>
+    .btn-primary {
+    color: #fff;
+    background-color: grey;
+    border-color: grey;
+  }
+  </style>
+  
+  </head>
+
+  <body background="images/6.jpg">
+  
+  
+<nav role="navigation" class="navbar navbar-default">
+    
+    <div class="navbar-header">
+        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a href="main.html" class="navbar-brand">Home</a>
+    </div>
+
+	<div id="navbarCollapse" class="collapse navbar-collapse">
+		
+				<ul class="nav navbar-nav navbar-right" style="padding-top: 7px;"><li>
+				<div><form class="form-logout" id="form-logout">
+				<button type="submit" class="btn btn-default id=" button_logout"="">Log out</button>
+				</form></div></li></ul>
+	
+				<ul class="nav navbar-nav navbar-right">
+				<li><a href="registration.html">Registration</a></li>
+				</ul>
+				
+	</div>
+</nav>
+
+    <div id="container">
+	
+         <div class="rectangle">
+		 <div class="sqr"><i class="icon-facebook"></i></div>
+		 <div class="sqr"><i class="icon-gplus"></i></div>
+		 <div class="sqr"><i class="icon-twitter"></i></div>
+		 <div class="sqr"><i class="icon-mail-alt"></i></div>
+		 </div>
+		 <div style="clear:both;"></div>
+				 <form class="form-signin">
+				 <h2 class="header"></h2>
+
+				 <h2 class="form-signin-heading" style="color:#080808">Edit User</h2>
+				
+				<label for="nombre" class="sr-only">Name:</label>
+				<input type="nombre" class="form-control" id="nombre" placeholder="Name" required autofocus>
+				<label for="apellidos" class="sr-only">Nazwisko:</label>
+				<input type="text" class="form-control" id="apellidos" placeholder="Surname" required>
+				<label for="inputEmail" class="sr-only">Email address</label>
+				<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+				
+				
+				<button type="button" class="btn btn-lg btn-primary btn-block" id="button_edit">Edit</button><span id="put_result"></span>
+
+				<br></br>
+				
+				<h2 class="form-signin-heading" style="color:#080808">Delate User</h2>
+				
+				<label for="nombre" class="sr-only">Name:</label>
+				<!--<input type="nombre" class="form-control" id="delate_id" placeholder="Name" required>-->
+				<button type="button" class="btn btn-lg btn-primary btn-block" id="button_delete">Delate</button><span id="delate_result"></span>
+				
+				
+			  </form>
+
+	  
+	   <div style="clear:both;"></div>
+	   <div class="rectangle">
+	   <h4 class="footer"> Where to eat in Barcelona &copy; All rights reserved!</h4></div>
+	   </div> 
+    
+
+
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <script src="js/api.js"></script>
+	<script src="js/profile.js"></script>
+	<script src="js/logout.js"></script>
+
+
+  </body>
+</html>
