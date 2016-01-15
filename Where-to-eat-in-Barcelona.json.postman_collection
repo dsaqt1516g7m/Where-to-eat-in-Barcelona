@@ -15,7 +15,8 @@
 				"cdc2a46f-3a4d-4853-d5b4-1f3d5501d506",
 				"2a7130d9-5eeb-186a-93a9-af55bd259422",
 				"65f2fbe7-834d-be63-04a9-6affb4da6f1b",
-				"6baac33b-22f8-0c46-73b3-ac4a63a0be26"
+				"6baac33b-22f8-0c46-73b3-ac4a63a0be26",
+				"7f2b819d-c272-dca4-dbf6-04674ac6464a"
 			],
 			"owner": "165619"
 		},
@@ -83,23 +84,21 @@
 		{
 			"id": "2a7130d9-5eeb-186a-93a9-af55bd259422",
 			"headers": "",
-			"url": "http://localhost:8080/where/restaurant/E3B39DBE9B3411E5811EEFBFEE6E5871/comments",
-			"pathVariables": {},
+			"url": "http://localhost:8080/where/restaurant/1D228CD6B95811E5A7A1E7C4225B61D6/comments/",
 			"preRequestScript": "",
+			"pathVariables": {},
 			"method": "GET",
-			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
 			"data": [],
-			"dataMode": "urlencoded",
-			"name": "Get CommentsCollection",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1449597397754,
+			"dataMode": "params",
 			"version": 2,
-			"responses": [],
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"folder": "a7e5fbe3-7bba-4b38-c41a-73dd6ce9a1fe"
+			"time": 1452717905756,
+			"name": "Get CommentsCollection",
+			"description": "",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"responses": []
 		},
 		{
 			"id": "2ac7fca1-9ef2-bd7c-7f02-52fdf9a70696",
@@ -305,6 +304,25 @@
 			"helperAttributes": {},
 			"time": 1452623401921,
 			"name": "Restaurant Collection",
+			"description": "",
+			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
+			"responses": []
+		},
+		{
+			"id": "7f2b819d-c272-dca4-dbf6-04674ac6464a",
+			"headers": "X-Auth-Token: B52940CCB3B011E5BB7B2308BB96BBE5\n",
+			"url": "http://localhost:8080/where/restaurant/FAEA0B04BBA411E5A95C0333F73E50D5/comments/0F2819BCBBA511E5A95C0333F73E50D5",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1452875677505,
+			"name": "Delete CommentsCollection",
 			"description": "",
 			"collectionId": "322df718-ca1d-0a70-53bb-1f3917870e99",
 			"responses": []

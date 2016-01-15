@@ -193,7 +193,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
 function getRestaurant() {//finally function not used
 	var id = getUrlParameter('id');
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
-	var url = "http://localhost:8080/where" + "/restaurant/"; + id;
+	var url = BASE_URI + "/restaurant/"; + id;
 
 		
 			$.ajax({
