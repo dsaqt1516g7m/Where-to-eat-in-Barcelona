@@ -39,7 +39,7 @@ public class Main {
      */
     public static HttpServer startServer() {
         // create a resource config that scans for JAX-RS resources and providers
-        // in edu.upc.eetac.dsa.grouptalk package
+        // in edu.upc.eetac.dsa.where package
         final ResourceConfig rc = new WhereResourceConfig();
 
         // create and start a new instance of grizzly http server

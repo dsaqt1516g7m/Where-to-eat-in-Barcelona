@@ -1,5 +1,6 @@
 package edu.upc.eetac.dsa.group7;
 
+import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.linking.DeclarativeLinkingFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
@@ -14,5 +15,6 @@ public class WhereResourceConfig extends ResourceConfig {
         register(RolesAllowedDynamicFeature.class);
         register(DeclarativeLinkingFeature.class);
         packages("edu.upc.eetac.dsa.where.cors");
+        register(JacksonFeature.class);
     }
 }
