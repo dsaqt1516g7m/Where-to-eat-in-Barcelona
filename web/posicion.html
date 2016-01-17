@@ -37,7 +37,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
 function initMap() {
     var id = getUrlParameter('id');
 //	var authToken = JSON.parse(sessionStorage["auth-token"]);
-	var url = BASE_URI + "/restaurant/" + id;
+	var url = "http://147.83.7.206:8080/where" + "/restaurant/" + id;
 	
 			$.ajax({
 			url : url,

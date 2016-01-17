@@ -1,5 +1,5 @@
-var BASE_URI="http://localhost:8080/where";
-//var BASE_URI="http://147.83.7.206:8080/where";
+//var BASE_URI="http://localhost:8080/where";
+var BASE_URI="http://147.83.7.206:8080/where";
 
 
 function deleteComment(commentsid) {
