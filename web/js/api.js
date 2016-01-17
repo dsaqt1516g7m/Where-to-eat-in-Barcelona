@@ -109,7 +109,8 @@ function CreateUser (user){
 				fullname: user.fullname
 
 	}).done(function(data, status, jqxhr) {
-		alert("You created user:" + user.loginid + " with password: " + user.password + ". Please Log in!");			
+		alert("You created user:" + user.loginid + " with password: " + user.password + ". Please Log in!");
+        window.location = 'login.html';			
   	}).fail(function() {
 		alert("problems");
 	});
@@ -118,7 +119,6 @@ function CreateUser (user){
 
 function CreateRes (restaurant){
 	var url = BASE_URI + '/restaurant';
-	//var data = JSON.stringify(restaurant);
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
 				
 	$.ajax({
@@ -128,11 +128,15 @@ function CreateRes (restaurant){
 	 
      headers: {
          "X-Auth-Token":authToken.token
-     }
-	}).done(function(data, status, jqxhr) {
-		alert("You created restaurant:" + restaurant.name);			
-  	}).fail(function() {
-		alert("problems");
+     },
+     statusCode: {
+				200: function(data, status, jqxhr) {
+				    alert("You created restaurant:" + restaurant.name);
+                },
+                400: function(){
+                    alert("We have some problems, please try again later");
+                }
+                }
 	});
 }
 
@@ -208,15 +212,11 @@ function getRestaurants(){
       dataType : 'json',
    }).done(function(data, status, jqxhr) {
 				var restaurant = data.restaurants;
-				
 				$.each(restaurant, function(i, v) {
 					var restaurant = v;
-
 					$('<br><strong> Name: ' + restaurant.name + '</strong><br>').appendTo($('#restaurantes_result'));
 					$('<strong> Description: </strong> ' + restaurant.description + '<br>').appendTo($('#restaurantes_result'));
 					$('<button><a href="details.html?id='+ restaurant.id +'" <h4>' + "Go to details!" +'</h4></a></button>').appendTo($('#restaurantes_result'));
-					//$('<button><a href="posicion.html?id='+ restaurant.id +'" <h4>' + "Go to details" +'</h4></a></button>').appendTo($('#restaurantes_result'));
-					//$('<a href="posicion.html?id='+ restaurant.id +'" <h4>'  +'</h4></a>');
 					$('<p>').appendTo($('#restaurantes_result')); 
 				});
    }).fail(function() {

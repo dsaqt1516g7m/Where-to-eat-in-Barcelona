@@ -21,7 +21,8 @@ function deleteComment(commentsid) {
 			"X-Auth-Token":authToken.token},
              statusCode: {
 				403: function() {
-				alert( "This is not your comment!" );}}
+				alert( "This is not your comment!" );}
+                }
 				}).fail(function() {
 							alert("Oh! Error... !");
 							//$('<div class="alert alert-danger"> <strong>Oh!</strong> Error! </div>').appendTo($("#delate_comment_result"));

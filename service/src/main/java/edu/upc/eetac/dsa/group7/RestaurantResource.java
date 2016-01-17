@@ -30,7 +30,7 @@ public class RestaurantResource {
     public Restaurant createRestaurant(@FormParam("name") String name, @FormParam("description") String description, @FormParam("avgprice") Float avgprice, @FormParam("address") String address, @FormParam("phone") String phone, @FormParam("lat") Float lat, @FormParam("lng") Float lng, @Context UriInfo uriInfo) throws URISyntaxException {
         if (name == null || description == null || avgprice == null || address == null || phone == null || lat == null || lng == null) {
             throw new BadRequestException("all parameters are mandatory");
-            //check if all the paramenters are correct
+            //check if all the parameters are correct
         }
         //initiate the needed objects
         RestaurantDAO restaurantDAO = new RestaurantDAOImpl();
