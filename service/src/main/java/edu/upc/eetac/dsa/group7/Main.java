@@ -1,17 +1,14 @@
 package edu.upc.eetac.dsa.group7;
 
-import edu.upc.eetac.dsa.group7.dao.AuthTokenDAOImpl;
-import edu.upc.eetac.dsa.group7.dao.UserDAO;
-import edu.upc.eetac.dsa.group7.dao.UserDAOImpl;
-import edu.upc.eetac.dsa.group7.entity.AuthToken;
-import edu.upc.eetac.dsa.group7.entity.User;
+import org.glassfish.grizzly.http.server.HttpHandler;
 import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.grizzly.http.server.NetworkListener;
+import org.glassfish.grizzly.http.server.StaticHttpHandler;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import java.io.IOException;
 import java.net.URI;
-import java.sql.SQLException;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
@@ -42,9 +39,16 @@ public class Main {
         // in edu.upc.eetac.dsa.where package
         final ResourceConfig rc = new WhereResourceConfig();
 
+        HttpServer httpServer = GrizzlyHttpServerFactory.createHttpServer(URI.create(getBaseURI()), rc);
+        HttpHandler httpHandler = new StaticHttpHandler("../web");
+        httpServer.getServerConfiguration().addHttpHandler(httpHandler, "/");
+
+        for (NetworkListener l : httpServer.getListeners()){
+            l.getFileCache().setEnabled(false);
+        }
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI
-        return GrizzlyHttpServerFactory.createHttpServer(URI.create(getBaseURI()), rc);
+        return httpServer;
     }
     /**
      * Main method.

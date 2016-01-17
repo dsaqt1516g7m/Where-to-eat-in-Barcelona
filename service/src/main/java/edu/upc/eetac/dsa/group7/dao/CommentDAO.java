@@ -9,6 +9,6 @@ public interface CommentDAO {
     public Comment createComment(String creator, String restaurant, String title, String comment, int likes) throws SQLException;
     public Comment getCommentById(String id) throws SQLException;
     public CommentCollection getComments(String restaurantid) throws SQLException;
-    public Comment responseComment(String id, String response) throws SQLException;
+    public void responseComment(String id, String response) throws SQLException;
     public boolean deleteComment(String id) throws SQLException;
 }

@@ -144,7 +144,7 @@ public class CommentDAOImpl implements CommentDAO {
         //return the comment collection
     }
     @Override
-    public Comment responseComment(String id, String response) throws SQLException {
+    public void responseComment(String id, String response) throws SQLException {
         Comment comment = null;
         //initiate variables and database connection
         Connection connection = null;
@@ -167,7 +167,7 @@ public class CommentDAOImpl implements CommentDAO {
             if (connection != null) connection.close();
         }
         //return the comment to print it
-        return comment;
+        return;
     }
     @Override
     public boolean deleteComment(String id) throws SQLException {

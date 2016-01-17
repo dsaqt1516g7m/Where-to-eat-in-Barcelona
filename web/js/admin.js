@@ -49,6 +49,7 @@ $("#create_boton").click(function(e) {
 			create.phone = $("#phone").val();
 			create.lat = $("#lat").val();
 			create.lng = $("#lng").val();
-			CreateRes(create);		
+			CreateRes(create);
+            window.location='main.html';	
 	    }
 });

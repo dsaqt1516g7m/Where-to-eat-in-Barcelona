@@ -90,13 +90,18 @@ public class CommentResource {
     //method to delete a comment giving its id
     public void deleteComment(@PathParam("id") String id) {
         //store the id from the user, using securityContext
+        boolean allow = false;
         String userid = securityContext.getUserPrincipal().getName();
         CommentDAO commentDAO = new CommentDAOImpl();
         UserDAO userDAO = new UserDAOImpl();
         try {
+
             //check if the comment was created by the same user, or if you are the admin
             String creator = commentDAO.getCommentById(id).getCreator();
-            if (!userid.equals(creator) || userDAO.admin(securityContext.getUserPrincipal().getName()) == false) {
+            if (userid.equals(creator)){
+                allow = true;
+            }
+            if (allow == false && userDAO.admin(securityContext.getUserPrincipal().getName()) == false) {
                 throw new ForbiddenException("operation not allowed");
                 //throw an error if any condition isn't acomplished
             }
@@ -114,7 +119,7 @@ public class CommentResource {
     @Produces(WhereMediaType.WHERE_COMMENT)
     //only the creator of the resturant can response a comment
     //response a comment giving its id and the response
-    public Comment responseComment(@PathParam("restaurantid") String restaurantid, @PathParam("id") String id, @FormParam("response") String response) {
+    public void responseComment(@PathParam("restaurantid") String restaurantid, @PathParam("id") String id, @FormParam("response") String response) {
         //check if the response is valid
         if (response == null)
             throw new BadRequestException("response cannot be null");
@@ -129,20 +134,21 @@ public class CommentResource {
             String userid = securityContext.getUserPrincipal().getName();
             if (ownerid.equals(userid)) {
                 //update the comment setting the response
-                comment = commentDAO.responseComment(id, response);
+                comment = commentDAO.getCommentById(id);
                 if (comment == null) {
                     //throw exception if the comment doesn't exists
                     throw new NotFoundException("Comment with id =" + id + " doesn't exists");
                 }
+                commentDAO.responseComment(id, response);
             } else {
                 //throw a bad request if you aren't the owner of the restaurant
-                throw new BadRequestException("You must be the owner of the restaurant to write a response");
+                throw new ForbiddenException("You must be the owner of the restaurant to write a response");
             }
         } catch (SQLException e) {
             //throw error if any SQL fails
             throw new InternalServerErrorException();
         }
         //return the full comment, now with the response
-        return comment;
+        return;
     }
 }

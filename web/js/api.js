@@ -1,5 +1,5 @@
-//var BASE_URI="http://localhost:8080/where";
-var BASE_URI="http://147.83.7.206:8080/where";
+var BASE_URI="http://localhost:8080/where";
+//var BASE_URI="http://147.83.7.206:8080/where";
 
 
 function linksToMap(links){
@@ -107,13 +107,7 @@ function CreateUser (user){
 				password: user.password,
 				email: user.email,
 				fullname: user.fullname
-//	$.ajax({
-//		url : url,
-//		type : 'POST',
-//		crossDomain : true,
-//		dataType : 'json',
-//       contentType : "application/json; charset=utf-8",  // "application/vnd.dsa.where.user+json",
-//		data : data,
+
 	}).done(function(data, status, jqxhr) {
 		alert("You created user:" + user.loginid + " with password: " + user.password + ". Please Log in!");			
   	}).fail(function() {
@@ -126,15 +120,6 @@ function CreateRes (restaurant){
 	var url = BASE_URI + '/restaurant';
 	//var data = JSON.stringify(restaurant);
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
-	//	$.post(url,
-		//	{
-		//		name: restaurant.name,
-		//		description: restaurant.description,
-			//	avgprice: restaurant.avgprice,
-			//	address: restaurant.address,
-			//	phone: restaurant.phone,
-			//	lat: restaurant.lat,
-			//	lng: restaurant.lng
 				
 	$.ajax({
      type: 'POST',
@@ -261,6 +246,7 @@ function getDetails(){
 					$('<strong> Description: </strong> ' + restaurant.description + '<br>').appendTo($('#details_result'));
 					$('<strong> Average price: </strong> ' + restaurant.avgprice + ' &#8364' + '<br>').appendTo($('#details_result'));
 					$('<strong> Adress: </strong> ' + restaurant.address + '<br>').appendTo($('#details_result'));
+                    $('<strong> Likes: </strong> ' + restaurant.likes + '<br>').appendTo($('#details_result'));
 					$('<strong> Phone: </strong> ' + restaurant.phone + '<br>').appendTo($('#details_result'));
 					
    }).fail(function() {
@@ -284,7 +270,8 @@ function CreateComment (comment){
          "X-Auth-Token":authToken.token
      }
 	}).done(function(data, status, jqxhr) {
-		alert("You created comment");			
+		alert("You created comment");
+        window.location.reload();
   	}).fail(function() {
 		alert("Problems! Probably you already commented this Restaurant!");
 	});
@@ -292,7 +279,7 @@ function CreateComment (comment){
 
 
 function getComments(){
-	var id = getUrlParameter('id');
+    var id = getUrlParameter('id');
    var url = BASE_URI + "/restaurant/" + id + "/comments";
    console.log(url);
    $("#comments_result").text('');
@@ -314,8 +301,12 @@ function getComments(){
 					var vote = vote.fontsize(6);
 					$('<br><strong> Title: ' + comment.title + '</strong><br>').appendTo($('#comments_result'));
 					$('<strong> Comment: </strong> ' + comment.comment + '<br>').appendTo($('#comments_result'));
+                    $('<strong> Owner response: </strong> ' + comment.response + '<br>').appendTo($('#comments_result'));
 					$('<strong> Vote: </strong> ' + vote + '<br>').appendTo($('#comments_result'));
 					$('<button type="button" onClick="deleteComment(\''+ comment.id + '\');">Delete</button><span id="delate_comment_result"></span>').appendTo($('#comments_result'));
+                    $('<br><strong> Response: </strong> <br>').appendTo($('#comments_result'));
+                    $('<input type="text" id="response_text"><br>').appendTo($('#comments_result'));
+                    $('<button type="button" onClick="responseComment(\''+ comment.id + '\');">Response</button><span id="response_comment_result"></span>').appendTo($('#comments_result'));
 					$('<p>').appendTo($('#comments_result')); 
 				});
    }).fail(function() {

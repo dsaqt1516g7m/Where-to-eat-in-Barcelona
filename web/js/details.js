@@ -1,5 +1,5 @@
-//var BASE_URI="http://localhost:8080/where";
-var BASE_URI="http://147.83.7.206:8080/where";
+var BASE_URI="http://localhost:8080/where";
+//var BASE_URI="http://147.83.7.206:8080/where";
 
 
 function deleteComment(commentsid) {
@@ -26,7 +26,45 @@ function deleteComment(commentsid) {
 							alert("Oh! Error... !");
 							//$('<div class="alert alert-danger"> <strong>Oh!</strong> Error! </div>').appendTo($("#delate_comment_result"));
 							}).done(function() {
-							alert("Done! You delate comment!");
+							alert("Done! You deleted the comment!");
+                            window.location.reload();
+							//$('<div class="alert alert-success"> <strong>Done!</strong> You delate comment! </div>').appendTo($("#delate_comment_result"));;
+							});
+    
+}
+
+function responseComment(commentsid) {
+	var id = getUrlParameter('id');
+    response ={
+        'response':$("#response_text").val()
+        };
+	var authToken = JSON.parse(sessionStorage["auth-token"]);
+	var url = BASE_URI + '/restaurant/' + id + '/comments/' + commentsid;
+    console.log(response);
+	$("#delate_comment_result").text('');
+
+		   $.ajax({
+		
+           name: authToken.userid,
+           url : url,
+           type : 'PUT',
+           crossDomain : true,
+           dataType : 'json',
+		   contentType : 'application/x-www-form-urlencoded',
+           data: $.param(response),
+		   headers: {
+			"X-Auth-Token":authToken.token
+            },
+            
+             statusCode: {
+				403: function() {
+				alert( "You must be the owner of the restaurant to write a response!" );}}
+				}).fail(function() {
+							alert("Oh! Error... !");
+							//$('<div class="alert alert-danger"> <strong>Oh!</strong> Error! </div>').appendTo($("#delate_comment_result"));
+							}).done(function() {
+							alert("Done! You've responded a comment!");
+                            window.location.reload();
 							//$('<div class="alert alert-success"> <strong>Done!</strong> You delate comment! </div>').appendTo($("#delate_comment_result"));;
 							});
     
@@ -74,7 +112,6 @@ $("#create_comment").click(function(e) {
 
 $(document).ready(function(){
 	getComments();
-	console.log("hello");
 });
 
 
