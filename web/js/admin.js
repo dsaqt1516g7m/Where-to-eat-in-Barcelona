@@ -50,6 +50,5 @@ $("#create_boton").click(function(e) {
 			create.lat = $("#lat").val();
 			create.lng = $("#lng").val();
 			CreateRes(create);
-            window.location='main.html';	
 	    }
 });

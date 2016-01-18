@@ -37,18 +37,17 @@ public class Main {
     public static HttpServer startServer() {
         // create a resource config that scans for JAX-RS resources and providers
         // in edu.upc.eetac.dsa.where package
-        final ResourceConfig rc = new WhereResourceConfig();
-
+        /*final ResourceConfig rc = new WhereResourceConfig();
         HttpServer httpServer = GrizzlyHttpServerFactory.createHttpServer(URI.create(getBaseURI()), rc);
         HttpHandler httpHandler = new StaticHttpHandler("../web");
         httpServer.getServerConfiguration().addHttpHandler(httpHandler, "/");
-
         for (NetworkListener l : httpServer.getListeners()){
             l.getFileCache().setEnabled(false);
         }
-        // create and start a new instance of grizzly http server
-        // exposing the Jersey application at BASE_URI
-        return httpServer;
+        return httpServer;*/
+        final ResourceConfig rc = new WhereResourceConfig();
+        return GrizzlyHttpServerFactory.createHttpServer(URI.create(getBaseURI()), rc);
+
     }
     /**
      * Main method.

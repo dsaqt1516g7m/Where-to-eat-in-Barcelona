@@ -132,9 +132,10 @@ function CreateRes (restaurant){
      statusCode: {
 				200: function(data, status, jqxhr) {
 				    alert("You created restaurant:" + restaurant.name);
+                    window.location='main.html';
                 },
                 400: function(){
-                    alert("We have some problems, please try again later");
+                    alert("We have some problems, please try again later. \n Tip: Check the input data.");
                 }
                 }
 	});
