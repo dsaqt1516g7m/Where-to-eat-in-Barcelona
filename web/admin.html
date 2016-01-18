@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-	
+
+<head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="description" content="">
     <meta name="author" content="">
-<link rel="stylesheet" href="fontello/css/fontello.css" type="text/css"/>
+    <link rel="stylesheet" href="fontello/css/fontello.css" type="text/css" />
 
     <title>Create Restaurant</title>
 
@@ -17,78 +18,79 @@
 
     <script src="js/ie-emulation-modes-warning.js"></script>
 
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="shortcut icon" href="images/food.png" type="image/png" />
-  </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="images/food.png" type="image/png" />
+</head>
 
-  <body background="images/5.jpg">
+<body background="images/5.jpg">
 
-  <nav role="navigation" class="navbar navbar-default">
-   
-    <div class="navbar-header">
-        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a href="main.html" class="navbar-brand">Home</a>
-    </div>
-  </div>
-</nav>
+    <nav role="navigation" class="navbar navbar-default">
+
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="main.html" class="navbar-brand">Home</a>
+        </div>
+        </div>
+    </nav>
 
     <div id="container">
-	
-         <div class="rectangle">
-		 <div class="sqr"><i class="icon-facebook"></i></div>
-		 <div class="sqr"><i class="icon-gplus"></i></div>
-		 <div class="sqr"><i class="icon-twitter"></i></div>
-		 <div class="sqr"><i class="icon-mail-alt"></i></div>
-		 </div>
-		 <div style="clear:both;"></div>
-				<form class="form-admin">
 
-				<h2>Create New Restaurant</h2>
-				
-				<label for="name" class="sr-only">Name</label>
-				<input type="name" id="name" class="form-control" placeholder="Name" required autofocus>
-				<label for="description" class="sr-only">Description</label>
-				<input type="description" id="description" class="form-control" placeholder="Description" required>
-				<label for="avgprice" class="sr-only">Average Price</label>
-				<input type="number" id="avgprice" class="form-control" placeholder="Average Price" required>
-				<label for="address" class="sr-only">Address</label>
-				<input type="address" id="address" class="form-control" placeholder="Address" required>
-				<label for="phone" class="sr-only">Phone</label>
-				<input type="number" id="phone" class="form-control" placeholder="Phone" required>
-				<label for="lat" class="sr-only">Latitude</label>
-				<input type="number" id="lat" class="form-control" placeholder="Latitude" required>
-				<label for="lng" class="sr-only">Longitude</label>
-				<input type="number" id="lng" class="form-control" placeholder="Longitude" required>
-				
-				<button type="button" class="btn btn-lg btn-primary btn-block" id="create_boton">Create</button>
+        <div class="rectangle">
+            <div class="sqr"><i class="icon-facebook"></i></div>
+            <div class="sqr"><i class="icon-gplus"></i></div>
+            <div class="sqr"><i class="icon-twitter"></i></div>
+            <div class="sqr"><i class="icon-mail-alt"></i></div>
+        </div>
+        <div style="clear:both;"></div>
+        <form class="form-admin">
 
-			  </form>
+            <h2>Create New Restaurant</h2>
 
-	  
-	   <div style="clear:both;"></div>
-	   <div class="rectangle">
-	   <h4 class="footer"> Where to eat in Barcelona &copy; All rights reserved!</h4></div>
-	   </div> 
-    
+            <label for="name" class="sr-only">Name</label>
+            <input type="name" id="name" class="form-control" placeholder="Name"  autofocus>
+            <label for="description" class="sr-only">Description</label>
+            <input type="description" id="description" class="form-control" placeholder="Description" >
+            <label for="avgprice" class="sr-only">Average Price</label>
+            <input type="number" id="avgprice" class="form-control" placeholder="Average Price" >
+            <label for="address" class="sr-only">Address</label>
+            <input type="address" id="address" class="form-control" placeholder="Address" >
+            <label for="phone" class="sr-only">Phone</label>
+            <input type="number" id="phone" class="form-control" placeholder="Phone" >
+            <label for="lat" class="sr-only">Latitude (Introduce here your latitude or click the button)</label>
+            <input type="number" id="lat" class="form-control" placeholder="Latitude" >
+            <label for="lng" class="sr-only">Longitude (Introduce here your longitude or click the button)</label>
+            <input type="number" id="lng" class="form-control" placeholder="Longitude">
+
+            <button type="button" class="btn btn-lg btn-primary btn-block" id="create_boton">Create</button>
+
+        </form>
+
+
+        <div style="clear:both;"></div>
+        <div class="rectangle">
+            <h4 class="footer"> Where to eat in Barcelona &copy; All rights reserved!</h4></div>
+    </div>
+
 
 
     <script src="js/ie10-viewport-bug-workaround.js"></script>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
 
     <script src="js/api.js"></script>
-	<script src="js/admin.js"></script>
+    <script src="js/admin.js"></script>
 
 
-  </body>
+</body>
+
 </html>

@@ -156,7 +156,6 @@ function check(){
 		
     }
 	}).done(function(data, status, jqxhr) {
-		console.log("change");
 		window.location.replace('admin.html');
   	}).fail(function() {
 		alert("You are not admin or owner!");
@@ -191,10 +190,6 @@ function getRestaurant() {//finally function not used
 			type : 'GET',
 			crossDomain : true,
 			dataType : 'json',
-			//data: $.param(restaurant),
-			//headers: {
-			//"X-Auth-Token":authToken.token
-			//}
 			 }).done(function(data, status, jqxhr) {
 			});
   
@@ -349,4 +344,51 @@ function getRestaurantByName(name){
 	  $('<p>').appendTo($('#search_result')); 
 	  $('<p>').appendTo($('#search_result')); 
    });
+}
+
+
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+	
+function initMap() {
+    var id = getUrlParameter('id');
+	var url = BASE_URI + "/restaurant/" + id;
+	
+			$.ajax({
+			url : url,
+			type : 'GET',
+			crossDomain : true,
+			dataType : 'json',
+			 }).done(function(data, status, jqxhr) {
+				var restaurant = data;
+			  
+				var myLatLng = {lat: restaurant.lat, lng: restaurant.lng};
+				var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 8,
+				center: myLatLng
+				});
+
+				var marker = new google.maps.Marker({
+				position: myLatLng,
+				map: map,
+				title: restaurant.name
+				});
+				
+			}).fail(function() {
+      $("#details_result").text("Problem with localisation of restaurant");
+   });
+  
+
 }
