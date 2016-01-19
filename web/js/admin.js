@@ -31,8 +31,7 @@ $("#create_boton").click(function (e) {
             document.getElementById('lng').style.background = '#F6B5B5';
             $('#lng').attr('placeholder', 'Fill it!');
         }
-    }
-    else {
+    }else {
         var create = new Object();
         create.name = $("#name").val();
         create.description = $("#description").val();
@@ -44,3 +43,16 @@ $("#create_boton").click(function (e) {
         CreateRes(create);
     }
 });
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    $("#lat").val(position.coords.latitude);
+    $("#lng").val(position.coords.longitude);
+}

@@ -53,24 +53,26 @@
             <h2>Create New Restaurant</h2>
 
             <label for="name" class="sr-only">Name</label>
-            <input type="name" id="name" class="form-control" placeholder="Name"  autofocus>
+            <input type="name" id="name" class="form-control" placeholder="Name" autofocus>
             <label for="description" class="sr-only">Description</label>
-            <input type="description" id="description" class="form-control" placeholder="Description" >
+            <input type="description" id="description" class="form-control" placeholder="Description">
             <label for="avgprice" class="sr-only">Average Price</label>
-            <input type="number" id="avgprice" class="form-control" placeholder="Average Price" >
+            <input type="number" id="avgprice" class="form-control" placeholder="Average Price">
             <label for="address" class="sr-only">Address</label>
-            <input type="address" id="address" class="form-control" placeholder="Address" >
+            <input type="address" id="address" class="form-control" placeholder="Address">
             <label for="phone" class="sr-only">Phone</label>
-            <input type="number" id="phone" class="form-control" placeholder="Phone" >
-            <label for="lat" class="sr-only">Latitude (Introduce here your latitude or click the button)</label>
-            <input type="number" id="lat" class="form-control" placeholder="Latitude" >
-            <label for="lng" class="sr-only">Longitude (Introduce here your longitude or click the button)</label>
-            <input type="number" id="lng" class="form-control" placeholder="Longitude">
+            <input type="number" id="phone" class="form-control" placeholder="Phone">
+            <label for="lat" class="sr-only">Latitude</label>
+            <input type="text" id="lat" class="form-control" placeholder="Latitude  (Introduce here your latitude or click the button)" readonly="readonly">
+            <label for="lng" class="sr-only">Longitude </label>
+            <input type="text" id="lng" class="form-control" placeholder="Longitude (Introduce here your longitude or click the button)" readonly="readonly">
 
             <button type="button" class="btn btn-lg btn-primary btn-block" id="create_boton">Create</button>
 
-        </form>
+            
 
+        </form>
+<button class="btn btn-lg btn-primary btn-block" onclick="getLocation()">I'm seeing you</button>
 
         <div style="clear:both;"></div>
         <div class="rectangle">
@@ -79,7 +81,7 @@
 
 
 
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <!--<script src="js/ie10-viewport-bug-workaround.js"></script>-->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
