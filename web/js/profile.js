@@ -42,7 +42,8 @@ function deleteUser() {
 				}).fail(function() {
 							$('<div class="alert alert-danger"> <strong>Oh!</strong> Error! </div>').appendTo($("#delate_result"));
 							}).done(function() {
-							$('<div class="alert alert-success"> <strong>Done!</strong> You delate user! </div>').appendTo($("#delate_result"));;
+							$('<div class="alert alert-success"> <strong>Done!</strong> You have deleted this user! </div>').appendTo($("#delate_result"));
+                            window.location='login.html';
 							});
     
 }
